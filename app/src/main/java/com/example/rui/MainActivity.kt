@@ -1,12 +1,10 @@
 package com.example.rui
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,10 +28,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.BtEntrar.setOnClickListener{
-            Entrar()
+            entrar()
         }
     }
-    private fun Entrar(){
+    private fun entrar(){
 
         val progressbar = binding.progressBar
         progressbar.visibility = View.VISIBLE
