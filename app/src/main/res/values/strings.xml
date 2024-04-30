@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">R.U.I</string>
-    <string name="app_name_completo">Restaurante Universitario - Campus Itapajé</string>
-    <string name="txt_Button_Entrar">Entrar</string>
+    <string name="app_name_completo" translatable="false">Restaurante Universitario - Campus Itapajé</string>
+    <string name="txt_Button_Entrar" translatable="false">Entrar</string>
+    <string name="txt_Button_Entrar_Nutri" translatable="false">Nutricionista</string>
     <string name="des_img_comida">Prato de comida</string>
     <string name="des_img_ufc">Logo da UFC</string>
+    <string name="txt_Tela_Cardapio" translatable="false">Cardápio</string>
 </resources>
