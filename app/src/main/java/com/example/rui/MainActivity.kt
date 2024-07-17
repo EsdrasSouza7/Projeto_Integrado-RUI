@@ -29,11 +29,15 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        binding.BtAvaliar.setOnClickListener{
+            Avaliar()
+        }
+
         binding.BtEntrar.setOnClickListener{
-            Entrar()
+            Cardapio()
         }
     }
-    private fun Entrar(){
+    private fun Cardapio(){
 
         val progressbar = binding.progressBar
         progressbar.visibility = View.VISIBLE
@@ -45,6 +49,21 @@ class MainActivity : AppCompatActivity() {
     }
     private fun navegateTelaCardapio(){
         val intent = Intent(this, TelaCardapio::class.java)
+        startActivity(intent)
+        finish()
+    }
+    private fun Avaliar(){
+
+        val progressbar = binding.progressBar
+        progressbar.visibility = View.VISIBLE
+
+        binding.BtEntrar.isEnabled = false
+        binding.BtEntrar.setTextColor(Color.WHITE)
+
+        Handler(Looper.getMainLooper()).postDelayed({navegateTelaFormulario()},2000)
+    }
+    private fun navegateTelaFormulario(){
+        val intent = Intent(this, TelaFormulario::class.java)
         startActivity(intent)
         finish()
     }

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TelaFormulario">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/DataAvaliacao"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/txt_data_almoco"
+        android:textSize="20sp"
+        android:paddingStart="10sp"
+        android:paddingEnd="10sp"/>
+
+
+    <EditText
+        android:id="@+id/RespData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/DataAvaliacao"
+        android:paddingStart="10sp"
+        android:paddingEnd="10sp"/>
+
+    <TextView
+        android:id="@+id/Sugestao"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/RespData"
+        android:text="@string/txt_sugestao_almoco"
+        android:textSize="20sp"
+        android:paddingStart="10sp"
+        android:paddingEnd="10sp"/>
+
+    <EditText
+        android:id="@+id/ResSugestao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Sugestao"
+        android:paddingStart="10sp"
+        android:paddingEnd="10sp"/>
+
+    <TextView
+        android:id="@+id/Proteina"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ResSugestao"
+        android:text="@string/txt_proteina_escolhida"
+        android:textSize="20sp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"/>
+
+    <Button
+        android:id="@+id/CarneVermelha"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Proteina"
+        android:text="@string/btn_carne_vermelha"
+        android:textSize="15sp"
+        android:layout_marginStart="10dp"/>
+
+    <Button
+        android:id="@+id/CarneVegetariana"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Proteina"
+        android:text="@string/btn_carne_vegetariana"
+        android:textSize="15sp"
+        android:layout_marginEnd="10dp"/>
+
+    <Button
+        android:id="@+id/CarneBranca"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_carne_branca"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/Proteina"
+        app:layout_constraintStart_toEndOf="@id/CarneVermelha"
+        app:layout_constraintEnd_toStartOf="@id/CarneVegetariana"/>
+
+    <Button
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
