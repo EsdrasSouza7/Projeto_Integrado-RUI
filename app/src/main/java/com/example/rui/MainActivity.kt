@@ -1,12 +1,10 @@
 package com.example.rui
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -29,22 +27,43 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        binding.BtAvaliar.setOnClickListener{
+            avaliar()
+        }
+
         binding.BtEntrar.setOnClickListener{
-            Entrar()
+            cardapio()
         }
     }
-    private fun Entrar(){
+    private fun cardapio(){
 
         val progressbar = binding.progressBar
         progressbar.visibility = View.VISIBLE
 
         binding.BtEntrar.isEnabled = false
+        binding.BtAvaliar.isEnabled = false
         binding.BtEntrar.setTextColor(Color.WHITE)
 
-        Handler(Looper.getMainLooper()).postDelayed({navegateTelaCardapio()},2000)
+        Handler(Looper.getMainLooper()).postDelayed({navegateTelaCardapio()},500)
     }
     private fun navegateTelaCardapio(){
         val intent = Intent(this, TelaCardapio::class.java)
+        startActivity(intent)
+        finish()
+    }
+    private fun avaliar(){
+
+        val progressbar = binding.progressBar
+        progressbar.visibility = View.VISIBLE
+
+        binding.BtAvaliar.isEnabled = false
+        binding.BtEntrar.isEnabled = false
+        binding.BtAvaliar.setTextColor(Color.WHITE)
+
+        Handler(Looper.getMainLooper()).postDelayed({navegateTelaFormulario()},500)
+    }
+    private fun navegateTelaFormulario(){
+        val intent = Intent(this, TelaFormulario::class.java)
         startActivity(intent)
         finish()
     }
