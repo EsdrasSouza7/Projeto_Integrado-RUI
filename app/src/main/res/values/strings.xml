@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">R.U.I</string>
     <string name="app_name_completo">Restaurante Universitario - Campus Itapajé</string>
-    <string name="txt_Button_Entrar">Entrar</string>
+    <string name="txt_Button_Entrar">Cardapio</string>
+    <string name="txt_button_avaliar">Avaliar</string>
     <string name="des_img_comida">Prato de comida</string>
     <string name="des_img_ufc">Logo da UFC</string>
+    <string name="txt_data_almoco">Data da avaliação:</string>
+    <string name="txt_sugestao_almoco">Sugestão sobre o almoço:</string>
+    <string name="txt_proteina_escolhida">Escolha a proteína:</string>
+    <string name="btn_carne_vermelha">Carne vermelha</string>
+    <string name="btn_carne_branca">Carne branca</string>
+    <string name="btn_carne_vegetariana">Vegetariana</string>
+    <string name="titulo_formulario">Avaliação do cardápio</string>
+
 </resources>
