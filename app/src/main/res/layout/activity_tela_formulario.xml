@@ -9,6 +9,7 @@
 
     <View
         android:id="@+id/view"
+        style="@style/GradientAzulFormulario"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,13 +17,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <View
+        android:id="@+id/ContainerTop"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ImgLogoUFC"
+        android:layout_width="100dp"
+        android:layout_height="105dp"
+        android:contentDescription="@string/des_img_ufc"
+        android:src="@drawable/logo_ufc"
+        app:layout_constraintEnd_toEndOf="@+id/ContainerTop"
+        app:layout_constraintStart_toStartOf="@+id/ContainerTop"
+        app:layout_constraintTop_toTopOf="@+id/ContainerTop" />
+
     <TextView
         android:id="@+id/titulo_formulario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ContainerTop"
         android:text="@string/titulo_formulario"
         android:textSize="28sp"
         android:gravity="center"/>
@@ -39,30 +58,6 @@
         android:paddingStart="10sp"
         android:paddingEnd="10sp"/>
 
-
-    <TextView
-        android:id="@+id/Sugestao"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/DataAvaliacao"
-        android:text="@string/txt_sugestao_almoco"
-        android:textSize="20sp"
-        android:paddingStart="10sp"
-        android:paddingEnd="10sp"/>
-
-    <EditText
-        android:id="@+id/ResSugestao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Sugestao"
-        android:paddingStart="10sp"
-        android:paddingEnd="10sp"/>
-
     <TextView
         android:id="@+id/Proteina"
         android:layout_width="match_parent"
@@ -70,7 +65,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ResSugestao"
+        app:layout_constraintTop_toBottomOf="@id/DataAvaliacao"
         android:text="@string/txt_proteina_escolhida"
         android:textSize="20sp"
         android:gravity="center"/>
@@ -111,61 +106,99 @@
         android:background="@color/Primaria"
         android:textColor="@color/white"/>
 
-    <Button
-        android:id="@+id/bt_Enviar"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="-->"
-        android:textSize="20sp"/>
-
-    <LinearLayout
-        android:id="@+id/caixa_de_pergunta"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/CarneVermelha"
-        android:visibility="gone"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/CarneBranca"
         >
 
-        <RatingBar
-            android:id="@+id/ratingBar_Carne"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/caixa_de_pergunta"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Acompanhamentos"/>
-        <RatingBar
-            android:id="@+id/ratingBar_Acompanhamento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Salada"/>
-        <RatingBar
-            android:id="@+id/ratingBar_Salada"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bebida"/>
-        <RatingBar
-            android:id="@+id/ratingBar_Bebida"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
-    </LinearLayout>
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Carne"
+                android:textSize="20sp"
+                />
+
+            <RatingBar
+                android:id="@+id/ratingBar_Carne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:rating="4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Acompanhamentos"
+                android:textSize="20sp"/>
+
+            <RatingBar
+                android:id="@+id/ratingBar_Acompanhamento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:rating="4"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salada"
+                android:textSize="20sp"/>
+
+            <RatingBar
+                android:id="@+id/ratingBar_Salada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:rating="4"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bebida"
+                android:textSize="20sp"/>
+
+            <RatingBar
+                android:id="@+id/ratingBar_Bebida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:rating="4"/>
+
+            <TextView
+                android:id="@+id/Sugestao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/txt_sugestao_almoco"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextSugestao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/bt_Enviar"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:text="-->"
+                android:textSize="20sp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"/>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
