@@ -3,4 +3,7 @@
     <style name="GradientAzul">
         <item name="android:background">@drawable/grandient</item>
     </style>
+    <style name="GradientAzulFormulario">
+        <item name="android:background">@drawable/gradienteformulario</item>
+    </style>
 </resources>
