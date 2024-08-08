@@ -12,5 +12,10 @@
     <string name="btn_carne_branca">Carne branca</string>
     <string name="btn_carne_vegetariana">Vegetariana</string>
     <string name="titulo_formulario">Avaliação do cardápio</string>
+    <string name="formulario_av1">Carne</string>
+    <string name="formulario_av2">Acompanhamentos</string>
+    <string name="formulario_av3">Salada</string>
+    <string name="formulario_av4">Bebida</string>
+    <string name="btn_enviar">--></string>
 
 </resources>
