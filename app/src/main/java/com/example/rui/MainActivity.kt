@@ -45,11 +45,14 @@ class MainActivity : AppCompatActivity() {
         binding.BtEntrar.setTextColor(Color.WHITE)
 
         Handler(Looper.getMainLooper()).postDelayed({navegateTelaCardapio()},500)
+
+        binding.BtAvaliar.isEnabled = true
+        binding.BtEntrar.isEnabled = true
+        binding.BtAvaliar.setTextColor(Color.BLACK)
     }
     private fun navegateTelaCardapio(){
         val intent = Intent(this, TelaCardapio::class.java)
         startActivity(intent)
-        finish()
     }
     private fun avaliar(){
 
@@ -61,10 +64,13 @@ class MainActivity : AppCompatActivity() {
         binding.BtAvaliar.setTextColor(Color.WHITE)
 
         Handler(Looper.getMainLooper()).postDelayed({navegateTelaFormulario()},500)
+
+        binding.BtAvaliar.isEnabled = true
+        binding.BtEntrar.isEnabled = true
+        binding.BtAvaliar.setTextColor(Color.BLACK)
     }
     private fun navegateTelaFormulario(){
         val intent = Intent(this, TelaFormulario::class.java)
         startActivity(intent)
-        finish()
     }
 }
