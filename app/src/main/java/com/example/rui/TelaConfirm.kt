@@ -1,5 +1,6 @@
 package com.example.rui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -7,22 +8,26 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rui.databinding.ActivityCardapioBinding
 import com.example.rui.databinding.ActivityTelaConfirmBinding
-import com.example.rui.databinding.ActivityTelaFormularioBinding
 
-class TelaCardapio : AppCompatActivity() {
-    private lateinit var binding: ActivityCardapioBinding
+class TelaConfirm : AppCompatActivity() {
+    private lateinit var binding: ActivityTelaConfirmBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCardapioBinding.inflate(layoutInflater)
+        binding = ActivityTelaConfirmBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_cardapio)
+        setContentView(R.layout.activity_tela_confirm)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-
-
+        binding.btnCardapio.setOnClickListener{
+            navegateTelaCardapio()
+        }
+    }
+    private fun navegateTelaCardapio(){
+        val intent = Intent(this, TelaCardapio::class.java)
+        startActivity(intent)
+        finish()
     }
 }

@@ -6,4 +6,5 @@
     <style name="GradientAzulFormulario">
         <item name="android:background">@drawable/gradienteformulario</item>
     </style>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight"/>
 </resources>

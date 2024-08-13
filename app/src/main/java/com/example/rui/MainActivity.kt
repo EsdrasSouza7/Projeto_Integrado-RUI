@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rui.databinding.ActivityMainBinding
+import kotlinx.coroutines.delay
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,35 +37,39 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun cardapio(){
-
-        val progressbar = binding.progressBar
-        progressbar.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.VISIBLE
 
         binding.BtEntrar.isEnabled = false
         binding.BtAvaliar.isEnabled = false
         binding.BtEntrar.setTextColor(Color.WHITE)
 
+        Handler(Looper.getMainLooper()).postDelayed({ativarButoes()},500)
         Handler(Looper.getMainLooper()).postDelayed({navegateTelaCardapio()},500)
+    }
+    private fun ativarButoes(){
+        binding.progressBar.visibility = View.GONE
+        binding.BtAvaliar.isEnabled = true
+        binding.BtEntrar.isEnabled = true
+        binding.BtAvaliar.setTextColor(Color.BLACK)
+        binding.BtEntrar.setTextColor(Color.BLACK)
     }
     private fun navegateTelaCardapio(){
         val intent = Intent(this, TelaCardapio::class.java)
         startActivity(intent)
-        finish()
     }
     private fun avaliar(){
+        binding.progressBar.visibility = View.VISIBLE
 
-        val progressbar = binding.progressBar
-        progressbar.visibility = View.VISIBLE
-
-        binding.BtAvaliar.isEnabled = false
         binding.BtEntrar.isEnabled = false
-        binding.BtAvaliar.setTextColor(Color.WHITE)
+        binding.BtAvaliar.isEnabled = false
+        binding.BtEntrar.setTextColor(Color.WHITE)
 
+        Handler(Looper.getMainLooper()).postDelayed({ativarButoes()},500)
         Handler(Looper.getMainLooper()).postDelayed({navegateTelaFormulario()},500)
+
     }
     private fun navegateTelaFormulario(){
         val intent = Intent(this, TelaFormulario::class.java)
         startActivity(intent)
-        finish()
     }
 }

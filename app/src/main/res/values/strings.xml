@@ -12,5 +12,18 @@
     <string name="btn_carne_branca">Carne branca</string>
     <string name="btn_carne_vegetariana">Vegetariana</string>
     <string name="titulo_formulario">Avaliação do cardápio</string>
+    <string name="formulario_av1">Proteina:</string>
+    <string name="formulario_av2">Acompanhamentos:</string>
+    <string name="formulario_av4">Bebida:</string>
+    <string name="btn_enviar">--></string>
+    <string name="bot_carne_ruim">Botão Carne Ruim</string>
+    <string name="imagem_bot_o_carne_ruim">Imagem Botão Carne Ruim</string>
+    <string name="bot_o_carne_neutra">Botão Carne Neutra</string>
+    <string name="imagembot_ocarneneutra">Imagem Botão Carne Neutra</string>
+    <string name="bot_ocarneboa">Botão Carne Boa</string>
+    <string name="imagembot_ocarneboa">imagem Botão Carne Boa</string>
+    <string name="boa">Boa</string>
+    <string name="neutra">Neutra</string>
+    <string name="ruim">Ruim</string>
 
 </resources>
