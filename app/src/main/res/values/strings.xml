@@ -25,5 +25,20 @@
     <string name="boa">Boa</string>
     <string name="neutra">Neutra</string>
     <string name="ruim">Ruim</string>
+    <string name="confirmar_avaliacao">Avaliação Enviada com Sucesso</string>
+    <string name="email">Email:</string>
+    <string name="editText">É um texto</string>
+    <string name="bot_o_acompanhamento_ruim">botão acompanhamento ruim</string>
+    <string name="imagem_bot_o_acompanhamento_ruim">imagem botão acompanhamento ruim</string>
+    <string name="bot_o_acompanhamento_neutra">botão acompanhamento neutra</string>
+    <string name="imagem_bot_o_acompanhamento_neutra">imagem botão acompanhamento neutra</string>
+    <string name="bot_o_acompanhamento_bom">botão acompanhamento bom</string>
+    <string name="imagem_bot_o_acompanhamento_bom">imagem botão acompanhamento bom</string>
+    <string name="bot_o_bebida_ruim">botão bebida ruim</string>
+    <string name="imagem_bot_o_bebida_ruim">imagem botão bebida ruim</string>
+    <string name="bot_o_bebida_neutro">botão bebida neutro</string>
+    <string name="imagem_bot_o_bebida_neutra">imagem botão bebida neutra</string>
+    <string name="bot_o_bebida_bom">botão bebida bom</string>
+    <string name="imagem_bot_o_bebida_boa">imagem botão bebida boa</string>
 
 </resources>
