@@ -16,9 +16,7 @@ import com.example.rui.databinding.ActivityTelaFormularioBinding
 import java.text.SimpleDateFormat
 import java.util.Date
 
-
 class TelaFormulario : AppCompatActivity() {
-
     private lateinit var binding: ActivityTelaFormularioBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +30,6 @@ class TelaFormulario : AppCompatActivity() {
         }
 
         var butaoApertado = "None"
-
 
         binding.DataAtual.text = getData()
         binding.CarneVermelha.setOnClickListener {
@@ -86,9 +83,9 @@ class TelaFormulario : AppCompatActivity() {
         }
         binding.btEnviar.setOnClickListener{
             val confirmEnvio = AlertDialog.Builder(this)
-            confirmEnvio.setMessage("Confirmar Envio?")
+            confirmEnvio.setMessage("Confirmar envio?")
             confirmEnvio.setNeutralButton("Cancelar", null)
-            confirmEnvio.setPositiveButton("positivo") { _: DialogInterface?, _: Int -> enviar() }
+            confirmEnvio.setPositiveButton("Sim") { _: DialogInterface?, _: Int -> enviar() }
             confirmEnvio.show()
         }
     }
@@ -112,18 +109,19 @@ class TelaFormulario : AppCompatActivity() {
         val OpcaoBebida = findViewById<RadioGroup>(R.id.Avaliacaobebida)
 
         val selectProteina = OpcaoProteina.checkedRadioButtonId
-        val proteina =findViewById<RadioButton>(selectProteina)
+        val proteina = findViewById<RadioButton>(selectProteina)
         if (selectProteina == -1){
             Toast.makeText(this, "Avaliação da Proteina não Selecionado", Toast.LENGTH_SHORT).show()
             //Mensagem de Erro. ver se ja ta bom
         }else{
+            Toast.makeText(this, proteina.text,  Toast.LENGTH_LONG).show()
             //Programar a Confirmação do Dado
         }
 
         val selectAcompanhamento = OpcaoAcompanhamento.checkedRadioButtonId
-        val acompanhamento =findViewById<RadioButton>(selectAcompanhamento)
+        val acompanhamento = findViewById<RadioButton>(selectAcompanhamento)
         if (selectAcompanhamento == -1){
-            Toast.makeText(this, "Avaliação da Proteina não Selecionado", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Avaliação da Acompanhamento não Selecionado", Toast.LENGTH_SHORT).show()
             //Mensagem de Erro. ver se ja ta bom
         }else{
             //Programar a Confirmação do Dado
@@ -132,12 +130,12 @@ class TelaFormulario : AppCompatActivity() {
         val selectBebida = OpcaoBebida.checkedRadioButtonId
         val bebida =findViewById<RadioButton>(selectBebida)
         if (selectBebida == -1){
-            Toast.makeText(this, "Avaliação da Proteina não Selecionado", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Avaliação da Bebida não Selecionado", Toast.LENGTH_SHORT).show()
             //Mensagem de Erro. ver se ja ta bom
         }else{
             //Programar a Confirmação do Dado
         }
 
-        //navegateTelaConfirm()
+        navegateTelaConfirm()
     }
 }
