@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
@@ -104,38 +105,48 @@ class TelaFormulario : AppCompatActivity() {
         finish()
     }
     private fun enviar(){
-        val OpcaoProteina = findViewById<RadioGroup>(R.id.AvaliacaoCarne)
-        val OpcaoAcompanhamento = findViewById<RadioGroup>(R.id.AvaliacaoAcompanhamento)
-        val OpcaoBebida = findViewById<RadioGroup>(R.id.Avaliacaobebida)
+        val opcaoProteina = findViewById<RadioGroup>(R.id.AvaliacaoCarne)
+        val opcaoAcompanhamento = findViewById<RadioGroup>(R.id.AvaliacaoAcompanhamento)
+        val opcaoBebida = findViewById<RadioGroup>(R.id.Avaliacaobebida)
+        val campoEmail = findViewById<EditText>(R.id.EmailInstitucional)
 
-        val selectProteina = OpcaoProteina.checkedRadioButtonId
+        if (campoEmail.text.contains("@alu.ufc.br") or campoEmail.text.contains("@ufc.br")){
+            campoEmail.setTextColor(1234123123)
+        }else{
+            campoEmail.error = "E-mail Invalido. Aceito apenas Email Institucional"
+            return
+        }
+
+        val selectProteina = opcaoProteina.checkedRadioButtonId
         val proteina = findViewById<RadioButton>(selectProteina)
         if (selectProteina == -1){
             Toast.makeText(this, "Avaliação da Proteina não Selecionado", Toast.LENGTH_SHORT).show()
             return
             //Mensagem de Erro. ver se ja ta bom
         }else{
-            Toast.makeText(this, proteina.text,  Toast.LENGTH_LONG).show()
+
             //Programar a Confirmação do Dado
         }
 
-        val selectAcompanhamento = OpcaoAcompanhamento.checkedRadioButtonId
+        val selectAcompanhamento = opcaoAcompanhamento.checkedRadioButtonId
         val acompanhamento = findViewById<RadioButton>(selectAcompanhamento)
         if (selectAcompanhamento == -1){
             Toast.makeText(this, "Avaliação da Acompanhamento não Selecionado", Toast.LENGTH_SHORT).show()
             return
             //Mensagem de Erro. ver se ja ta bom
         }else{
+
             //Programar a Confirmação do Dado
         }
 
-        val selectBebida = OpcaoBebida.checkedRadioButtonId
+        val selectBebida = opcaoBebida.checkedRadioButtonId
         val bebida =findViewById<RadioButton>(selectBebida)
         if (selectBebida == -1){
             Toast.makeText(this, "Avaliação da Bebida não Selecionado", Toast.LENGTH_SHORT).show()
             return
             //Mensagem de Erro. ver se ja ta bom
         }else{
+
             //Programar a Confirmação do Dado
         }
 
