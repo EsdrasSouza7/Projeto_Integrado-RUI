@@ -5,4 +5,121 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TelaCardapio"/>
+    tools:context=".TelaCardapio"
+    style="@style/GradientAzulFormulario">
+
+    <TextView
+        android:id="@+id/acompanhamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Acompanhamento"
+        app:layout_constraintBottom_toTopOf="@+id/lista_acompanhamento"
+        app:layout_constraintTop_toBottomOf="@+id/lista"
+        tools:layout_editor_absoluteX="154dp" />
+
+    <TextView
+        android:id="@+id/ingredientes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Lista de ingredientes:"
+        app:layout_constraintBottom_toTopOf="@+id/lista"
+        app:layout_constraintTop_toBottomOf="@+id/comida"
+        tools:layout_editor_absoluteX="144dp" />
+
+    <TextView
+        android:id="@+id/ingredientes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="principal:"
+        app:layout_constraintEnd_toStartOf="@+id/comida"
+        tools:layout_editor_absoluteY="356dp" />
+
+    <View
+        android:id="@+id/ContainerTop"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ImgLogoUFC"
+        android:layout_width="100dp"
+        android:layout_height="105dp"
+        android:contentDescription="@string/des_img_ufc"
+        android:src="@drawable/logo_ufc"
+        app:layout_constraintEnd_toEndOf="@+id/ContainerTop"
+        app:layout_constraintStart_toStartOf="@+id/ContainerTop"
+        app:layout_constraintTop_toTopOf="@+id/ContainerTop" />
+
+    <TextView
+        android:id="@+id/cardapio"
+        android:layout_width="280dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:text="Cardapio UFC/Itapaje"
+        app:layout_constraintBottom_toTopOf="@+id/feijoada"
+        app:layout_constraintTop_toBottomOf="@+id/ContainerTop"
+        tools:layout_editor_absoluteX="83dp" />
+
+    <ImageView
+        android:id="@+id/feijoada"
+        android:layout_width="500dp"
+        android:layout_height="134dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/feijoada"
+        tools:layout_editor_absoluteY="149dp" />
+
+    <TextView
+        android:id="@+id/ingredientes"
+        android:layout_width="115dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="segunda"
+        app:layout_constraintTop_toBottomOf="@+id/feijoada"
+        tools:layout_editor_absoluteX="144dp" />
+
+    <TextView
+        android:id="@+id/comida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="feijoada"
+        tools:layout_editor_absoluteX="93dp"
+        tools:layout_editor_absoluteY="356dp" />
+
+    <TextView
+        android:id="@+id/lista"
+        android:layout_width="402dp"
+        android:layout_height="79dp"
+        android:text="Lasanha de carne moida, Acem Moida, Farinha de trigp, Tomate, Cebola, Pimentão, molho de tomate e sal;"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="440dp" />
+
+    <TextView
+        android:id="@+id/lista_acompanhamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arroz, Feijão, Macarrão."
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="580dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="62dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="377dp"
+        android:backgroundTint="#CCC5C5"
+        android:text="-->"
+        android:textColorLink="#BC3030"
+        app:layout_constraintStart_toStartOf="@+id/feijoada"
+        tools:layout_editor_absoluteY="196dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
