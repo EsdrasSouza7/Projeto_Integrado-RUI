@@ -112,6 +112,7 @@ class TelaFormulario : AppCompatActivity() {
         val proteina = findViewById<RadioButton>(selectProteina)
         if (selectProteina == -1){
             Toast.makeText(this, "Avaliação da Proteina não Selecionado", Toast.LENGTH_SHORT).show()
+            return
             //Mensagem de Erro. ver se ja ta bom
         }else{
             Toast.makeText(this, proteina.text,  Toast.LENGTH_LONG).show()
@@ -122,6 +123,7 @@ class TelaFormulario : AppCompatActivity() {
         val acompanhamento = findViewById<RadioButton>(selectAcompanhamento)
         if (selectAcompanhamento == -1){
             Toast.makeText(this, "Avaliação da Acompanhamento não Selecionado", Toast.LENGTH_SHORT).show()
+            return
             //Mensagem de Erro. ver se ja ta bom
         }else{
             //Programar a Confirmação do Dado
@@ -131,6 +133,7 @@ class TelaFormulario : AppCompatActivity() {
         val bebida =findViewById<RadioButton>(selectBebida)
         if (selectBebida == -1){
             Toast.makeText(this, "Avaliação da Bebida não Selecionado", Toast.LENGTH_SHORT).show()
+            return
             //Mensagem de Erro. ver se ja ta bom
         }else{
             //Programar a Confirmação do Dado
