@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -19,6 +20,7 @@ import java.util.Date
 
 class TelaFormulario : AppCompatActivity() {
     private lateinit var binding: ActivityTelaFormularioBinding
+    private lateinit var dbHelper: DBHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTelaFormularioBinding.inflate(layoutInflater)
@@ -29,6 +31,8 @@ class TelaFormulario : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        dbHelper = DBHelper(this)
 
         var butaoApertado = "None"
 
@@ -86,7 +90,7 @@ class TelaFormulario : AppCompatActivity() {
             val confirmEnvio = AlertDialog.Builder(this)
             confirmEnvio.setMessage("Confirmar envio?")
             confirmEnvio.setNeutralButton("Cancelar", null)
-            confirmEnvio.setPositiveButton("Sim") { _: DialogInterface?, _: Int -> enviar() }
+            confirmEnvio.setPositiveButton("Enviar") { _: DialogInterface?, _: Int -> enviar(butaoApertado) }
             confirmEnvio.show()
         }
     }
@@ -104,11 +108,19 @@ class TelaFormulario : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-    private fun enviar(){
+    private fun enviar(butaoapertado: String){
         val opcaoProteina = findViewById<RadioGroup>(R.id.AvaliacaoCarne)
         val opcaoAcompanhamento = findViewById<RadioGroup>(R.id.AvaliacaoAcompanhamento)
         val opcaoBebida = findViewById<RadioGroup>(R.id.Avaliacaobebida)
         val campoEmail = findViewById<EditText>(R.id.EmailInstitucional)
+        val campoSugestao = findViewById<EditText>(R.id.editTextSugestao)
+
+        val email = campoEmail.text.toString()
+        var proteina = ""
+        var acompanhamento = ""
+        var bebida = ""
+        var sugestao = campoSugestao.text.toString()
+        val data = getData()
 
         if (campoEmail.text.contains("@alu.ufc.br") or campoEmail.text.contains("@ufc.br")){
             campoEmail.setTextColor(1234123123)
@@ -118,38 +130,45 @@ class TelaFormulario : AppCompatActivity() {
         }
 
         val selectProteina = opcaoProteina.checkedRadioButtonId
-        val proteina = findViewById<RadioButton>(selectProteina)
+        val btnproteina = findViewById<RadioButton>(selectProteina)
         if (selectProteina == -1){
             Toast.makeText(this, "Avaliação da Proteina não Selecionado", Toast.LENGTH_SHORT).show()
             return
-            //Mensagem de Erro. ver se ja ta bom
+            //Mensagem de Erro.
         }else{
-
-            //Programar a Confirmação do Dado
+            proteina = btnproteina.text.toString()
         }
 
         val selectAcompanhamento = opcaoAcompanhamento.checkedRadioButtonId
-        val acompanhamento = findViewById<RadioButton>(selectAcompanhamento)
+        val btnacompanhamento = findViewById<RadioButton>(selectAcompanhamento)
         if (selectAcompanhamento == -1){
             Toast.makeText(this, "Avaliação da Acompanhamento não Selecionado", Toast.LENGTH_SHORT).show()
             return
-            //Mensagem de Erro. ver se ja ta bom
+            //Mensagem de Erro.
         }else{
-
-            //Programar a Confirmação do Dado
+            acompanhamento = btnacompanhamento.text.toString()
         }
 
         val selectBebida = opcaoBebida.checkedRadioButtonId
-        val bebida =findViewById<RadioButton>(selectBebida)
+        val btnbebida =findViewById<RadioButton>(selectBebida)
         if (selectBebida == -1){
             Toast.makeText(this, "Avaliação da Bebida não Selecionado", Toast.LENGTH_SHORT).show()
             return
-            //Mensagem de Erro. ver se ja ta bom
+            //Mensagem de Erro.
         }else{
-
-            //Programar a Confirmação do Dado
+            bebida = btnbebida.text.toString()
         }
 
-        navegateTelaConfirm()
+        if (sugestao.isEmpty()){
+            sugestao = "Em Branco"
+        }
+
+        val isInsert = dbHelper.insertData(email, data, butaoapertado, proteina, acompanhamento, bebida, sugestao)
+        if (isInsert){
+            navegateTelaConfirm()
+        }else{
+            Toast.makeText(this, "Erro ao Inserir Dados", Toast.LENGTH_SHORT).show()
+        }
+
     }
 }
