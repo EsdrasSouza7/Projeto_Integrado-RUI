@@ -55,7 +55,8 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/background_button_selector"
-        android:text="<--"
+        android:text="voltar"
+        android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
