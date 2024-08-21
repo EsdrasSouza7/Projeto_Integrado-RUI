@@ -17,7 +17,7 @@
         android:text="@string/guarni_o"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lista"/>
+        app:layout_constraintTop_toBottomOf="@id/lista" />
 
     <TextView
         android:id="@+id/acompanhamentos"
@@ -25,20 +25,19 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/acompanhamento"
-        app:layout_constraintTop_toBottomOf="@id/proteinaDisponivel"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/proteinaDisponivel" />
 
     <TextView
         android:id="@+id/proteinaDisponivel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="@string/proteinas_1"
         android:layout_marginStart="7dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/proteinas_2"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/diaDaSemana"
-        />
+        app:layout_constraintTop_toBottomOf="@id/diaDaSemana" />
 
     <View
         android:id="@+id/ContainerTop"
@@ -73,9 +72,9 @@
         android:id="@+id/feijoada"
         android:layout_width="wrap_content"
         android:layout_height="180dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/feijoada"
         android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/salada"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardapio" />
@@ -86,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="@string/segunda"
+        android:text="@string/ter_a"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/feijoada"
@@ -96,19 +95,19 @@
         android:id="@+id/lista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="7dp"
         android:text="@string/acompanhamento_1"
-        app:layout_constraintTop_toBottomOf="@id/acompanhamentos"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/acompanhamentos" />
 
     <TextView
         android:id="@+id/guarni_o1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/guarni_o_1"
         android:layout_marginStart="7dp"
-        app:layout_constraintTop_toBottomOf="@id/guarni_o"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        android:text="@string/guarni_o_2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guarni_o" />
 
     <TextView
         android:id="@+id/salada"
@@ -119,28 +118,27 @@
         android:text="@string/salada"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guarni_o1"/>
+        app:layout_constraintTop_toBottomOf="@id/guarni_o1" />
 
     <TextView
         android:id="@+id/salada_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/salada_1"
         android:layout_marginStart="7dp"
-        app:layout_constraintTop_toBottomOf="@id/salada"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        android:text="@string/salada_2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/salada" />
 
-    <Button
-        android:id="@+id/button2"
+    <ImageButton
+        android:id="@+id/button1"
         android:layout_width="62dp"
-        android:layout_height="48dp"
+        android:layout_height="39dp"
         android:background="@android:color/transparent"
-        android:contentDescription="@string/desc_button2"
-        android:src="@drawable/ic_btn_next"
+        android:src="@drawable/ic_btn_back"
         android:textColorLink="#BC3030"
-        app:layout_constraintRight_toRightOf="@id/feijoada"
-        app:layout_constraintTop_toTopOf="@id/feijoada"
-        app:layout_constraintBottom_toBottomOf="@id/feijoada"/>
+        app:layout_constraintBottom_toBottomOf="@id/feijoada"
+        app:layout_constraintLeft_toLeftOf="@id/feijoada"
+        app:layout_constraintTop_toTopOf="@id/feijoada" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
