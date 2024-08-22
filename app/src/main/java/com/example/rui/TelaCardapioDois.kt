@@ -1,28 +1,32 @@
 package com.example.rui
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.rui.databinding.ActivityCardapioBinding
-import com.example.rui.databinding.ActivityTelaConfirmBinding
-import com.example.rui.databinding.ActivityTelaFormularioBinding
 
-class TelaCardapio : AppCompatActivity() {
-    private lateinit var binding: ActivityCardapioBinding
+class TelaCardapioDois : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCardapioBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_cardapio)
+        setContentView(R.layout.activity_tela_cardapio_dois)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val butao = findViewById<ImageButton>(R.id.btnPreviosCardapio)
+        butao.setOnClickListener{
+            previosCardapio()
+        }
+    }
 
-
-
+    private fun previosCardapio() {
+        val intent = Intent(this, Cardapio::class.java)
+        startActivity(intent)
+        finish()
     }
 }
