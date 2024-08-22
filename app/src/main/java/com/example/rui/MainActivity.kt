@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rui.databinding.ActivityMainBinding
-import kotlinx.coroutines.delay
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navegateTelaCardapio(){
-        val intent = Intent(this, TelaCardapio::class.java)
+        val intent = Intent(this, Cardapio::class.java)
         startActivity(intent)
     }
     private fun avaliar(){
