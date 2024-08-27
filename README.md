@@ -15,3 +15,6 @@ Luan Sales</br>
 - Avaliar cardapio: descrição da funcionalidade 1
 - visualizar o cardapio: descrição da funcionalidade 2
 
+<h1 align="center"> Apk do Prototipo para Teste </h1>
+https://drive.google.com/file/d/1lGUdJMOWcXF71pNgwkMIzfdkxI-PP79S/view?usp=sharing
+
