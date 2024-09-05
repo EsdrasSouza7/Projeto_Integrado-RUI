@@ -5,16 +5,23 @@ _Nosso projeto tem como funcionalidade a visualização e a avaliaçao do cardap
 
  ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge) 
 
-<h1 align="center"> 💻Participantes do projeto</h1>
-Cauã Brandão</br>
-Esdras Souza</br>
-Luan Sales</br>
+<h1 align="center"> 💻Participantes do projeto e orientador</h1>
+Anderson Uchoa 
+Cauã Brandão | Matricula: 540909</br>
+Esdras Souza | Matricula: xxxxxxx</br>
+Luan Sales | Matricula: XXXXXXX</br>
 
-<h1 align="center"> 🔧Funcionalidades do projeto</h1>
+<h1 align="center"> 🪧Funcionalidades do projeto</h1>
 
-- Avaliar cardapio: descrição da funcionalidade 1
-- visualizar o cardapio: descrição da funcionalidade 2
+- Avaliar cardapio: O usuario podera avalliar o cardapio nas categorias: "principal", "salada", "sobremesa", "bebida". Podera avaliar atraves de estrelas emtodas essas categorias.
+- visualizar o cardapio: O usuario podera observar o cardapio da semana na pagina principal. Alem disso, os ingredientes e a proporçao. 
+- receber notificação para a avaliaçao: Em um horario especifico do dia uma notificaçao sera mandado para o usuario para o mesmo ser lembrado de avaliar o cardapio do dia.
 
-<h1 align="center"> Apk do Prototipo para Teste </h1>
+<h1 align="center"> 🛒 Apk do Prototipo para Teste </h1>
 https://drive.google.com/file/d/1lGUdJMOWcXF71pNgwkMIzfdkxI-PP79S/view?usp=sharing
+
+<h1 align="center"> 🧰 Tecnologias ultilizadas </h1>
+
+
+
 
