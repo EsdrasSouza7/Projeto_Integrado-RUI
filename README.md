@@ -6,7 +6,7 @@ _Nosso projeto tem como funcionalidade a visualização e a avaliaçao do cardap
  ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge) 
 
 <h1 align="center"> 💻Participantes do projeto e orientador</h1>
-Anderson Uchoa 
+Anderson Uchoa <br> 
 Cauã Brandão | Matricula: 540909</br>
 Esdras Souza | Matricula: xxxxxxx</br>
 Luan Sales | Matricula: XXXXXXX</br>
@@ -21,6 +21,15 @@ Luan Sales | Matricula: XXXXXXX</br>
 https://drive.google.com/file/d/1lGUdJMOWcXF71pNgwkMIzfdkxI-PP79S/view?usp=sharing
 
 <h1 align="center"> 🧰 Tecnologias ultilizadas </h1>
+-FRONT-END:<br>
+ XML<br>
+ -BACK-END: <br>
+ Kotlin<br>
+ SQLite<br>
+ -API:<br>
+ MPAndroidChart
+ 
+ 
 
 
 
