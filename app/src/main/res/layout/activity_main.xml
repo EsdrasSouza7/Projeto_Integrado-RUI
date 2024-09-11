@@ -26,8 +26,8 @@
 
         <ImageView
             android:id="@+id/Ellipse"
-            android:layout_width="330dp"
-            android:layout_height="315dp"
+            android:layout_width="300dp"
+            android:layout_height="305dp"
             android:rotationX="180"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -45,8 +45,7 @@
             android:textSize="60sp"
             app:layout_constraintTop_toTopOf="@id/Ellipse"
             app:layout_constraintStart_toStartOf="@id/Ellipse"
-            app:layout_constraintEnd_toEndOf="@id/Ellipse"
-            app:layout_constraintRight_toLeftOf="@id/ImgLogoUFC" />
+            app:layout_constraintEnd_toEndOf="@id/Ellipse" />
 
         <TextView
             android:id="@+id/TxT_compl1"
