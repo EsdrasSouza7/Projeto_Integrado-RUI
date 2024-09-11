@@ -1,26 +1,17 @@
 package com.example.rui
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlarmManager
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Color
-import android.os.Build
-import android.os.Build.VERSION_CODES.O
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rui.databinding.ActivityMainBinding
@@ -41,6 +32,9 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.BackGround)
+
+
         // Agendar a primeira verificação
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, NotificationService::class.java)
@@ -60,15 +54,33 @@ class MainActivity : AppCompatActivity() {
         binding.BtnRespostas.setOnClickListener {
             respostas()
         }
+        binding.BtnNutricionista.setOnClickListener {
+            nutricionista()
+        }
     }
 
-    private fun cardapio() {
-        binding.progressBar.visibility = View.VISIBLE
-
+    private fun nutricionista() {
         binding.BtEntrar.isEnabled = false
         binding.BtAvaliar.isEnabled = false
         binding.BtnRespostas.isEnabled = false
-        binding.BtEntrar.setTextColor(Color.WHITE)
+        binding.BtnNutricionista.isEnabled = false
+        binding.BtnNutricionista.setTextColor(Color.BLACK)
+
+        Handler(Looper.getMainLooper()).postDelayed({ ativarButoes() }, 500)
+        Handler(Looper.getMainLooper()).postDelayed({ navegateTelaNutricionista() }, 500)
+    }
+
+    private fun navegateTelaNutricionista() {
+        val intent = Intent(this, TelaNutricionista::class.java)
+        startActivity(intent)
+    }
+
+    private fun cardapio() {
+        binding.BtEntrar.isEnabled = false
+        binding.BtAvaliar.isEnabled = false
+        binding.BtnRespostas.isEnabled = false
+        binding.BtnNutricionista.isEnabled = false
+        binding.BtEntrar.setTextColor(Color.BLACK)
 
         Handler(Looper.getMainLooper()).postDelayed({ ativarButoes() }, 500)
         Handler(Looper.getMainLooper()).postDelayed({ navegateTelaCardapio() }, 500)
@@ -80,12 +92,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun avaliar() {
-        binding.progressBar.visibility = View.VISIBLE
-
         binding.BtEntrar.isEnabled = false
         binding.BtAvaliar.isEnabled = false
         binding.BtnRespostas.isEnabled = false
-        binding.BtAvaliar.setTextColor(Color.WHITE)
+        binding.BtnNutricionista.isEnabled = false
+        binding.BtAvaliar.setTextColor(Color.BLACK)
 
         Handler(Looper.getMainLooper()).postDelayed({ ativarButoes() }, 500)
         Handler(Looper.getMainLooper()).postDelayed({ navegateTelaFormulario() }, 500)
@@ -98,12 +109,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun respostas() {
-        binding.progressBar.visibility = View.VISIBLE
-
         binding.BtEntrar.isEnabled = false
         binding.BtAvaliar.isEnabled = false
         binding.BtnRespostas.isEnabled = false
-        binding.BtnRespostas.setTextColor(Color.WHITE)
+        binding.BtnNutricionista.isEnabled = false
+        binding.BtnRespostas.setTextColor(Color.BLACK)
 
         Handler(Looper.getMainLooper()).postDelayed({ ativarButoes() }, 500)
         Handler(Looper.getMainLooper()).postDelayed({ navegateTelaRespostas() }, 500)
@@ -115,12 +125,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun ativarButoes() {
-        binding.progressBar.visibility = View.GONE
         binding.BtAvaliar.isEnabled = true
         binding.BtEntrar.isEnabled = true
         binding.BtnRespostas.isEnabled = true
-        binding.BtAvaliar.setTextColor(Color.BLACK)
-        binding.BtEntrar.setTextColor(Color.BLACK)
-        binding.BtnRespostas.setTextColor(Color.BLACK)
+        binding.BtnNutricionista.isEnabled = true
+        binding.BtAvaliar.setTextColor(Color.WHITE)
+        binding.BtEntrar.setTextColor(Color.WHITE)
+        binding.BtnRespostas.setTextColor(Color.WHITE)
+        binding.BtnNutricionista.setTextColor(Color.WHITE)
     }
 }

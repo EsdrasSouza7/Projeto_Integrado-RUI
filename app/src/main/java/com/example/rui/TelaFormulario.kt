@@ -17,8 +17,10 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.rui.databinding.ActivityTelaFormularioBinding
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 class TelaFormulario : AppCompatActivity() {
+
     private lateinit var binding: ActivityTelaFormularioBinding
     private lateinit var dbHelper: DBHelper
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +38,11 @@ class TelaFormulario : AppCompatActivity() {
 
         var butaoApertado = "None"
 
-        binding.DataAtual.text = getData()
+        binding.btnVoltar.setOnClickListener {
+            finish()
+        }
+
+        getData()
         binding.CarneVermelha.setOnClickListener {
             ativar()
             butaoApertado = "Carne Vermelha"
@@ -98,15 +104,50 @@ class TelaFormulario : AppCompatActivity() {
         val caixa = binding.caixaDePergunta
         caixa.visibility = View.VISIBLE
     }
-    private fun getData(): String{
-        val formataData = SimpleDateFormat("dd/MM/yy")
+    private fun getData(){
+        val dia = SimpleDateFormat("dd", Locale.US)
         val data = Date()
-        return formataData.format(data)
-    }
-    private fun navegateTelaConfirm(){
-        val intent = Intent(this, TelaConfirm::class.java)
-        startActivity(intent)
-        finish()
+        binding.DataAtual.text = "${dia.format(data)} de"
+
+        val mes = SimpleDateFormat("MM", Locale.US)
+        when {
+            mes.format(data) == "01" -> {
+                binding.DataAtual2.text = "Janeiro"
+            }
+            mes.format(data) == "02" -> {
+                binding.DataAtual2.text = "Fevereiro"
+            }
+            mes.format(data) == "03" -> {
+                binding.DataAtual2.text = "Março"
+            }
+            mes.format(data) == "04" -> {
+                binding.DataAtual2.text = "Abril"
+            }
+            mes.format(data) == "05" -> {
+                binding.DataAtual2.text = "Maio"
+            }
+            mes.format(data) == "06" -> {
+                binding.DataAtual2.text = "Junho"
+            }
+            mes.format(data) == "07" -> {
+                binding.DataAtual2.text = "Julho"
+            }
+            mes.format(data) == "08" -> {
+                binding.DataAtual2.text = "Agosto"
+            }
+            mes.format(data) == "09" -> {
+                binding.DataAtual2.text = "Setembro"
+            }
+            mes.format(data) == "10" -> {
+                binding.DataAtual2.text = "Outubro"
+            }
+            mes.format(data) == "11" -> {
+                binding.DataAtual2.text = "Novembro"
+            }
+            mes.format(data) == "12" -> {
+                binding.DataAtual2.text = "Dezembro"
+            }
+        }
     }
     private fun enviar(butaoapertado: String){
         val opcaoProteina = findViewById<RadioGroup>(R.id.AvaliacaoCarne)
@@ -116,11 +157,11 @@ class TelaFormulario : AppCompatActivity() {
         val campoSugestao = findViewById<EditText>(R.id.editTextSugestao)
 
         val email = campoEmail.text.toString()
-        var proteina = ""
-        var acompanhamento = ""
-        var bebida = ""
+        val proteina: String
+        val acompanhamento: String
+        val bebida: String
         var sugestao = campoSugestao.text.toString()
-        val data = getData()
+        val data = getDataCompleta()
 
         if (campoEmail.text.contains("@alu.ufc.br") or campoEmail.text.contains("@ufc.br")){
             campoEmail.setTextColor(1234123123)
@@ -165,10 +206,25 @@ class TelaFormulario : AppCompatActivity() {
 
         val isInsert = dbHelper.insertData(email, data, butaoapertado, proteina, acompanhamento, bebida, sugestao)
         if (isInsert){
-            navegateTelaConfirm()
+            val envioBemSucedido = AlertDialog.Builder(this)
+            envioBemSucedido.setMessage("Avaliação bem sucedida")
+            envioBemSucedido.setPositiveButton("Cardapio"){_: DialogInterface?, _: Int -> navegarCardapio()}
+            envioBemSucedido.setNegativeButton("Menu Inicial"){_: DialogInterface?, _: Int -> finish()}
+            envioBemSucedido.show()
         }else{
             Toast.makeText(this, "Erro ao Inserir Dados", Toast.LENGTH_SHORT).show()
         }
+    }
 
+    private fun navegarCardapio() {
+        val intent = Intent(this, Cardapio::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun getDataCompleta(): String {
+        val formatData = SimpleDateFormat("dd/MM/yyyy", Locale.US)
+        val data = Date()
+        return formatData.format(data)
     }
 }

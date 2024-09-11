@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">R.U.I</string>
-    <string name="app_name_completo">Restaurante Universitario - Campus Itapajé</string>
     <string name="txt_Button_Entrar">Cardapio</string>
     <string name="txt_button_avaliar">Avaliar</string>
     <string name="des_img_comida">Prato de comida</string>

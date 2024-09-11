@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="GradientAzul">
-        <item name="android:background">@drawable/grandient</item>
-    </style>
-    <style name="GradientAzulFormulario">
-        <item name="android:background">@drawable/gradienteformulario</item>
-    </style>
     <style name="AppTheme" parent="Theme.AppCompat.DayNight"/>
 </resources>

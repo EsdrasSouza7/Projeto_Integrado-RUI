@@ -5,5 +5,10 @@
     <color name="Blue_Dark">#1A3C93</color>
     <color name="Yellow">#EFE729</color>
     <color name="Red">#FF0000</color>
-    <color name="Primaria">#265CE1</color>
+    <color name="Primaria">#0571D3</color>
+    <color name="BackGround">#E8F1F2</color>
+    <color name="Azul1">#1B98E0</color>
+    <color name="Azul2">#247BA0</color>
+    <color name="Azul3">#006494</color>
+    <color name="Azul4">#13293D</color>
 </resources>
