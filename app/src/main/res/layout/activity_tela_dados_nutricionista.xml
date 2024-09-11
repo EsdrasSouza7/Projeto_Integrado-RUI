@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BackGround"
+    tools:context=".TelaDadosNutricionista">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/ContainerTop"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ImgLogoUFC"
+                android:layout_width="102dp"
+                android:layout_height="105dp"
+                android:contentDescription="@string/des_img_ufc"
+                android:src="@drawable/logo_ufc"
+                app:layout_constraintEnd_toEndOf="@+id/ContainerTop"
+                app:layout_constraintTop_toTopOf="@+id/ContainerTop" />
+
+            <ImageButton
+                android:id="@+id/btVoltar"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/buttonredondos"
+                android:src="@drawable/baseline_arrow_back_ios_new_24"
+                android:textAllCaps="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtDados"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/ContainerTop"
+                app:layout_constraintTop_toTopOf="@id/ContainerTop"
+                app:layout_constraintRight_toRightOf="@id/ContainerTop"
+                android:layout_marginTop="10dp"
+
+                android:text="Dados do Dia:"
+                android:textSize="25sp"
+                android:textColor="@color/Azul1"
+
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:textAllCaps="true"
+                />
+
+            <TextView
+                android:id="@+id/txtDia"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/ContainerTop"
+                app:layout_constraintTop_toBottomOf="@id/txtDados"
+                app:layout_constraintRight_toRightOf="@id/ContainerTop"
+                android:layout_marginTop="4dp"
+
+                android:text="31/12/2024"
+                android:textSize="25sp"
+                android:textColor="@color/Azul1"
+
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:textAllCaps="true"
+                />
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChart"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                app:layout_constraintTop_toBottomOf="@id/txtDia"/>
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChart"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                app:layout_constraintTop_toBottomOf="@id/pieChart"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,14 +18,5 @@ class Cardapio : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val butao: ImageButton = findViewById(R.id.btnNextCardapio)
-        butao.setOnClickListener{
-            nextCardapio()
-        }
-    }
-    private fun nextCardapio(){
-        val intent = Intent(this, TelaCardapioDois::class.java)
-        startActivity(intent)
-        finish()
     }
 }
