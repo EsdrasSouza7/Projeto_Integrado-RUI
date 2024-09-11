@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         binding.BtnNutricionista.setTextColor(Color.BLACK)
 
         Handler(Looper.getMainLooper()).postDelayed({ ativarButoes() }, 500)
-        Handler(Looper.getMainLooper()).postDelayed({ navegateTelaNutricionista() }, 500)
+        Handler(Looper.getMainLooper()).postDelayed({ navegateTelaNutricionista() }, 100)
     }
 
     private fun navegateTelaNutricionista() {
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         binding.BtEntrar.setTextColor(Color.BLACK)
 
         Handler(Looper.getMainLooper()).postDelayed({ ativarButoes() }, 500)
-        Handler(Looper.getMainLooper()).postDelayed({ navegateTelaCardapio() }, 500)
+        Handler(Looper.getMainLooper()).postDelayed({ navegateTelaCardapio() }, 100)
     }
 
     private fun navegateTelaCardapio() {
@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
         binding.BtAvaliar.setTextColor(Color.BLACK)
 
         Handler(Looper.getMainLooper()).postDelayed({ ativarButoes() }, 500)
-        Handler(Looper.getMainLooper()).postDelayed({ navegateTelaFormulario() }, 500)
+        Handler(Looper.getMainLooper()).postDelayed({ navegateTelaFormulario() }, 100)
 
     }
 

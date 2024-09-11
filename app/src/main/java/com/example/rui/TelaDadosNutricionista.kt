@@ -5,8 +5,10 @@ import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.github.mikephil.charting.charts.BarChart
@@ -31,24 +33,33 @@ class TelaDadosNutricionista : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_tela_dados_nutricionista)
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.BackGround)
+
         pieChart = findViewById(R.id.pieChart)
         barChart = findViewById(R.id.barChart)
+
+        val data = intent.getStringExtra("data")
+        val textoData = findViewById<TextView>(R.id.txtDia)
+        textoData.text = data
 
         // Obter uma instância do banco de dados
         db = openOrCreateDatabase("formulario.db", MODE_PRIVATE, null)
 
         // Configurar o gráfico de pizza
-        setupPieChart()
+        if (data != null) {
+            setupPieChart(data)
+        }
 
         // Configurar o gráfico de barras empilhadas
-        setupStackedBarChart()
+        if (data != null) {
+            setupStackedBarChart(data)
+        }
 
         val btnVoltar = findViewById<ImageButton>(R.id.btVoltar)
         btnVoltar.setOnClickListener {
@@ -56,8 +67,8 @@ class TelaDadosNutricionista : AppCompatActivity() {
         }
     }
 
-    private fun contadorDeStringIguais(cursor: Cursor, colunaDB: String): MutableMap<String, Int> {
-        val contagemPalavras = mutableMapOf<String, Int>()
+    private fun contadorDeStringIguais(cursor: Cursor, colunaDB: String): MutableMap<String, Float> {
+        val contagemPalavras = mutableMapOf<String, Float>()
         val listaPalavras: MutableList<String> = mutableListOf()
 
         if (cursor.moveToFirst()) {
@@ -65,33 +76,50 @@ class TelaDadosNutricionista : AppCompatActivity() {
                 listaPalavras.add(cursor.getString(cursor.getColumnIndexOrThrow(colunaDB)))
             } while (cursor.moveToNext())
         }
-
-        for (palavra in listaPalavras) {
-            val count = contagemPalavras.getOrDefault(palavra, 0)
-            contagemPalavras[palavra] = count + 1
+        contagemPalavras["Boa"] = 0f
+        contagemPalavras["Neutra"] = 0f
+        contagemPalavras["Ruim"] = 0f
+        for (palavra  in listaPalavras) {
+            val count = contagemPalavras.getOrDefault("Boa", 0f)
+            if (palavra == "Boa"){
+                contagemPalavras[palavra] = count + 1f
+            }
         }
-
+        for (palavra  in listaPalavras) {
+            val count = contagemPalavras.getOrDefault("Neutra", 0f)
+            if (palavra == "Neutra"){
+                contagemPalavras[palavra] = count + 1f
+            }
+        }
+        for (palavra  in listaPalavras) {
+            val count = contagemPalavras.getOrDefault("Ruim", 0f)
+            if (palavra == "Ruim"){
+                contagemPalavras[palavra] = count + 1f
+            }
+        }
         return contagemPalavras
     }
 
-    private fun setupPieChart() {
+    private fun setupPieChart(dataDados: String) {
         // Buscar os dados do banco de dados SQLite
+        val colors = mutableListOf<Int>(
+            ColorTemplate.MATERIAL_COLORS[0],
+            ColorTemplate.MATERIAL_COLORS[1],
+            ColorTemplate.MATERIAL_COLORS[2])
         val pieEntries = mutableListOf<PieEntry>()
-        val cursor = db.rawQuery("SELECT respostaProteina FROM AvaliacaoRU", null)
-//        val contagemPalavras = mutableMapOf<String, Int>()
-//        val listaPalavras: MutableList<String> = mutableListOf()
+        val cursor = db.rawQuery("SELECT respostaProteina FROM AvaliacaoRU WHERE data = '$dataDados'", null)
 
         val contagemPalavras = contadorDeStringIguais(cursor, "respostaProteina")
         cursor.close()
 
         //adicionando os dados
         for ((palavra, count) in contagemPalavras) {
-            pieEntries.add(PieEntry(count.toFloat(), palavra))
+            pieEntries.add(PieEntry(count, palavra))
         }
 
         // Configurar o dataset para o gráfico de pizza
         val dataSet = PieDataSet(pieEntries, "Qualidades Proteinas")
-        dataSet.colors = ColorTemplate.MATERIAL_COLORS.toList() // Definir cores
+        dataSet.colors = colors // Definir cores
         dataSet.valueTextSize = 13f // Tamanho do texto opcional
         dataSet.valueFormatter = DefaultValueFormatter(0) // Formatação opcional
 
@@ -106,7 +134,8 @@ class TelaDadosNutricionista : AppCompatActivity() {
 
         pieChart.invalidate() // Atualizar o gráfico
     }
-    private fun setupStackedBarChart() {
+
+    private fun setupStackedBarChart(dataDados: String) {
         // Criar os dados de entrada para o gráfico
         val barEntries = mutableListOf<BarEntry>()
         val colors = mutableListOf<Int>(
@@ -122,7 +151,7 @@ class TelaDadosNutricionista : AppCompatActivity() {
         var r = 0
 
         //Carne Vermelha
-        var cursor = db.rawQuery("SELECT qualProteina, respostaProteina FROM AvaliacaoRU WHERE qualProteina = 'Carne Vermelha'", null)
+        var cursor = db.rawQuery("SELECT qualProteina, respostaProteina FROM AvaliacaoRU WHERE data = '$dataDados' AND qualProteina = 'Carne Vermelha'", null)
         var contagemPalavras = contadorDeStringIguais(cursor, "respostaProteina")
         cursor.close()
         for ((palavra, count) in contagemPalavras) {
@@ -141,7 +170,7 @@ class TelaDadosNutricionista : AppCompatActivity() {
         barEntries.add(BarEntry(0f, notas1))
 
         //Carne Branca
-        cursor = db.rawQuery("SELECT qualProteina, respostaProteina FROM AvaliacaoRU WHERE qualProteina = 'Carne Branca'", null)
+        cursor = db.rawQuery("SELECT qualProteina, respostaProteina FROM AvaliacaoRU WHERE data = '$dataDados' AND qualProteina = 'Carne Branca'", null)
         contagemPalavras = contadorDeStringIguais(cursor, "respostaProteina")
         cursor.close()
         for ((palavra, count) in contagemPalavras) {
@@ -172,7 +201,7 @@ class TelaDadosNutricionista : AppCompatActivity() {
         barEntries.add(BarEntry(1f, notas2))
 
         //Vegetariana
-        cursor = db.rawQuery("SELECT qualProteina, respostaProteina FROM AvaliacaoRU WHERE qualProteina = 'Vegetariana'", null)
+        cursor = db.rawQuery("SELECT qualProteina, respostaProteina FROM AvaliacaoRU WHERE data = '$dataDados' AND qualProteina = 'Vegetariana'", null)
         contagemPalavras = contadorDeStringIguais(cursor, "respostaProteina")
         cursor.close()
         b=0

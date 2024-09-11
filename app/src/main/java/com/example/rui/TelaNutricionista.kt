@@ -29,6 +29,7 @@ class TelaNutricionista : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.BackGround)
 
         dbHelper = DBHelper(this)
         // Obter uma instância do banco de dados
@@ -65,6 +66,7 @@ class TelaNutricionista : AppCompatActivity() {
             // Definir o que acontece quando o botão é clicado
             button.setOnClickListener {
                 val intent = Intent(this, TelaDadosNutricionista::class.java)
+                intent.putExtra("data", date)
                 startActivity(intent)
             }
 
