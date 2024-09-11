@@ -1,13 +1,26 @@
 package com.example.rui
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.app.AlarmManager
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
+import android.os.Build
+import android.os.Build.VERSION_CODES.O
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rui.databinding.ActivityMainBinding
@@ -16,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    @SuppressLint("ScheduleExactAlarm")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -27,18 +41,28 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.BtAvaliar.setOnClickListener{
+        // Agendar a primeira verificação
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this, NotificationService::class.java)
+        val pendingIntent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+        // Agendar para rodar imediatamente
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), pendingIntent)
+
+
+        binding.BtAvaliar.setOnClickListener {
             avaliar()
         }
 
-        binding.BtEntrar.setOnClickListener{
+        binding.BtEntrar.setOnClickListener {
             cardapio()
         }
-        binding.BtnRespostas.setOnClickListener{
+        binding.BtnRespostas.setOnClickListener {
             respostas()
         }
     }
-    private fun cardapio(){
+
+    private fun cardapio() {
         binding.progressBar.visibility = View.VISIBLE
 
         binding.BtEntrar.isEnabled = false
@@ -46,15 +70,16 @@ class MainActivity : AppCompatActivity() {
         binding.BtnRespostas.isEnabled = false
         binding.BtEntrar.setTextColor(Color.WHITE)
 
-        Handler(Looper.getMainLooper()).postDelayed({ativarButoes()},500)
-        Handler(Looper.getMainLooper()).postDelayed({navegateTelaCardapio()},500)
+        Handler(Looper.getMainLooper()).postDelayed({ ativarButoes() }, 500)
+        Handler(Looper.getMainLooper()).postDelayed({ navegateTelaCardapio() }, 500)
     }
 
-    private fun navegateTelaCardapio(){
+    private fun navegateTelaCardapio() {
         val intent = Intent(this, Cardapio::class.java)
         startActivity(intent)
     }
-    private fun avaliar(){
+
+    private fun avaliar() {
         binding.progressBar.visibility = View.VISIBLE
 
         binding.BtEntrar.isEnabled = false
@@ -62,15 +87,17 @@ class MainActivity : AppCompatActivity() {
         binding.BtnRespostas.isEnabled = false
         binding.BtAvaliar.setTextColor(Color.WHITE)
 
-        Handler(Looper.getMainLooper()).postDelayed({ativarButoes()},500)
-        Handler(Looper.getMainLooper()).postDelayed({navegateTelaFormulario()},500)
+        Handler(Looper.getMainLooper()).postDelayed({ ativarButoes() }, 500)
+        Handler(Looper.getMainLooper()).postDelayed({ navegateTelaFormulario() }, 500)
 
     }
-    private fun navegateTelaFormulario(){
+
+    private fun navegateTelaFormulario() {
         val intent = Intent(this, TelaFormulario::class.java)
         startActivity(intent)
     }
-    private fun respostas(){
+
+    private fun respostas() {
         binding.progressBar.visibility = View.VISIBLE
 
         binding.BtEntrar.isEnabled = false
@@ -78,8 +105,8 @@ class MainActivity : AppCompatActivity() {
         binding.BtnRespostas.isEnabled = false
         binding.BtnRespostas.setTextColor(Color.WHITE)
 
-        Handler(Looper.getMainLooper()).postDelayed({ativarButoes()},500)
-        Handler(Looper.getMainLooper()).postDelayed({navegateTelaRespostas()},500)
+        Handler(Looper.getMainLooper()).postDelayed({ ativarButoes() }, 500)
+        Handler(Looper.getMainLooper()).postDelayed({ navegateTelaRespostas() }, 500)
     }
 
     private fun navegateTelaRespostas() {
