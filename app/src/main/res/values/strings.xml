@@ -11,8 +11,8 @@
     <string name="btn_carne_branca">Carne branca</string>
     <string name="btn_carne_vegetariana">Vegetariana</string>
     <string name="titulo_formulario">Avaliação do cardápio</string>
-    <string name="formulario_av1">Proteina:</string>
-    <string name="formulario_av2">Acompanhamentos:</string>
+    <string name="formulario_av1">Proteina:*</string>
+    <string name="formulario_av2">Acompanhamentos:*</string>
     <string name="formulario_av4">Bebida:</string>
     <string name="btn_enviar">--></string>
     <string name="bot_carne_ruim">Botão Carne Ruim</string>
