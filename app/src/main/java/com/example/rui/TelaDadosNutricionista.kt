@@ -3,7 +3,6 @@ package com.example.rui
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -26,9 +25,13 @@ import com.github.mikephil.charting.utils.ColorTemplate
 
 class TelaDadosNutricionista : AppCompatActivity() {
 
-    private lateinit var pieChart: PieChart
+    private lateinit var pieChartProteina: PieChart
     private lateinit var db: SQLiteDatabase
-    private lateinit var barChart: BarChart
+    private lateinit var barChartProteina: BarChart
+    private lateinit var pieCharAcompanhamento: PieChart
+    private lateinit var pieChartBebida: PieChart
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -41,8 +44,10 @@ class TelaDadosNutricionista : AppCompatActivity() {
 
         window.navigationBarColor = ContextCompat.getColor(this, R.color.BackGround)
 
-        pieChart = findViewById(R.id.pieChart)
-        barChart = findViewById(R.id.barChart)
+        pieChartProteina = findViewById(R.id.pieChartProteina)
+        barChartProteina = findViewById(R.id.barChartProteina)
+        pieCharAcompanhamento = findViewById(R.id.pieChartAcompanhamento)
+        pieChartBebida = findViewById(R.id.pieChartBebida)
 
         val data = intent.getStringExtra("data")
         val textoData = findViewById<TextView>(R.id.txtDia)
@@ -53,7 +58,9 @@ class TelaDadosNutricionista : AppCompatActivity() {
 
         // Configurar o gráfico de pizza
         if (data != null) {
-            setupPieChart(data)
+            setupPieChartProteina(data)
+            setupPieChartAcompanhamento(data)
+            setupPieChartBebida(data)
         }
 
         // Configurar o gráfico de barras empilhadas
@@ -70,6 +77,7 @@ class TelaDadosNutricionista : AppCompatActivity() {
     private fun contadorDeStringIguais(cursor: Cursor, colunaDB: String): MutableMap<String, Float> {
         val contagemPalavras = mutableMapOf<String, Float>()
         val listaPalavras: MutableList<String> = mutableListOf()
+        var verificacao = false
 
         if (cursor.moveToFirst()) {
             do {
@@ -97,10 +105,24 @@ class TelaDadosNutricionista : AppCompatActivity() {
                 contagemPalavras[palavra] = count + 1f
             }
         }
+        for (palavra  in listaPalavras) {
+            if (palavra == "Não Respondido"){
+                verificacao = true
+            }
+        }
+        if(verificacao){
+            contagemPalavras["Não Respondido"] = 0f
+            for (palavra  in listaPalavras) {
+                val count = contagemPalavras.getOrDefault("Não Respondido", 0f)
+                if (palavra == "Não Respondido"){
+                    contagemPalavras[palavra] = count + 1f
+                }
+            }
+        }
         return contagemPalavras
     }
 
-    private fun setupPieChart(dataDados: String) {
+    private fun setupPieChartProteina(dataDados: String) {
         // Buscar os dados do banco de dados SQLite
         val colors = mutableListOf<Int>(
             ColorTemplate.MATERIAL_COLORS[0],
@@ -125,14 +147,85 @@ class TelaDadosNutricionista : AppCompatActivity() {
 
         // Criar o objeto PieData e associá-lo ao gráfico
         val pieData = PieData(dataSet)
-        pieChart.data = pieData
+        pieChartProteina.data = pieData
 
         // Configurar outras propriedades do gráfico
-        pieChart.description.isEnabled = false // Desativar a descrição
-        pieChart.centerText = "Notas da Qualidade das Proteinas" // Texto central
-        pieChart.setEntryLabelColor(android.R.color.black) // Cor dos labels
+        pieChartProteina.description.isEnabled = false // Desativar a descrição
+        pieChartProteina.centerText = "Notas da Qualidade das Proteinas" // Texto central
+        pieChartProteina.setEntryLabelColor(android.R.color.black) // Cor dos labels
 
-        pieChart.invalidate() // Atualizar o gráfico
+        pieChartProteina.invalidate() // Atualizar o gráfico
+    }
+
+    private fun setupPieChartAcompanhamento(dataDados: String) {
+        // Buscar os dados do banco de dados SQLite
+        val colors = mutableListOf<Int>(
+            ColorTemplate.MATERIAL_COLORS[0],
+            ColorTemplate.MATERIAL_COLORS[1],
+            ColorTemplate.MATERIAL_COLORS[2])
+        val pieEntries = mutableListOf<PieEntry>()
+        val cursor = db.rawQuery("SELECT acompanhamento FROM AvaliacaoRU WHERE data = '$dataDados'", null)
+
+        val contagemPalavras = contadorDeStringIguais(cursor, "acompanhamento")
+        cursor.close()
+
+        //adicionando os dados
+        for ((palavra, count) in contagemPalavras) {
+            pieEntries.add(PieEntry(count, palavra))
+        }
+
+        // Configurar o dataset para o gráfico de pizza
+        val dataSet = PieDataSet(pieEntries, "Qualidades Acompanhamento")
+        dataSet.colors = colors // Definir cores
+        dataSet.valueTextSize = 13f // Tamanho do texto opcional
+        dataSet.valueFormatter = DefaultValueFormatter(0) // Formatação opcional
+
+        // Criar o objeto PieData e associá-lo ao gráfico
+        val pieData = PieData(dataSet)
+        pieCharAcompanhamento.data = pieData
+
+        // Configurar outras propriedades do gráfico
+        pieCharAcompanhamento.description.isEnabled = false // Desativar a descrição
+        pieCharAcompanhamento.centerText = "Notas da Qualidade das Acompanhamento" // Texto central
+        pieCharAcompanhamento.setEntryLabelColor(android.R.color.black) // Cor dos labels
+
+        pieCharAcompanhamento.invalidate() // Atualizar o gráfico
+    }
+
+    private fun setupPieChartBebida(dataDados: String) {
+        // Buscar os dados do banco de dados SQLite
+        val colors = mutableListOf<Int>(
+            ColorTemplate.MATERIAL_COLORS[0],
+            ColorTemplate.MATERIAL_COLORS[1],
+            ColorTemplate.MATERIAL_COLORS[2],
+            ColorTemplate.MATERIAL_COLORS[3])
+        val pieEntries = mutableListOf<PieEntry>()
+        val cursor = db.rawQuery("SELECT bebida FROM AvaliacaoRU WHERE data = '$dataDados'", null)
+
+        val contagemPalavras = contadorDeStringIguais(cursor, "bebida")
+        cursor.close()
+
+        //adicionando os dados
+        for ((palavra, count) in contagemPalavras) {
+            pieEntries.add(PieEntry(count, palavra))
+        }
+
+        // Configurar o dataset para o gráfico de pizza
+        val dataSet = PieDataSet(pieEntries, "Qualidades Bebida")
+        dataSet.colors = colors // Definir cores
+        dataSet.valueTextSize = 13f // Tamanho do texto opcional
+        dataSet.valueFormatter = DefaultValueFormatter(0) // Formatação opcional
+
+        // Criar o objeto PieData e associá-lo ao gráfico
+        val pieData = PieData(dataSet)
+        pieChartBebida.data = pieData
+
+        // Configurar outras propriedades do gráfico
+        pieChartBebida.description.isEnabled = false // Desativar a descrição
+        pieChartBebida.centerText = "Notas da Qualidade das Bebida" // Texto central
+        pieChartBebida.setEntryLabelColor(android.R.color.black) // Cor dos labels
+
+        pieChartBebida.invalidate() // Atualizar o gráfico
     }
 
     private fun setupStackedBarChart(dataDados: String) {
@@ -245,7 +338,7 @@ class TelaDadosNutricionista : AppCompatActivity() {
         dataSet.valueFormatter = DefaultValueFormatter(0) // Formatação opcional
 
         //Descrição embaixo da barra
-        val xAxis = barChart.xAxis
+        val xAxis = barChartProteina.xAxis
         xAxis.valueFormatter = IndexAxisValueFormatter(arrayOf("Carne Vermelha", "Carne Branca", "Vegetariana"))
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.granularity = 1f // Define a granularidade para 1, para que cada barra tenha uma descrição
@@ -255,12 +348,12 @@ class TelaDadosNutricionista : AppCompatActivity() {
         val barData = BarData(dataSet)
         barData.barWidth = 0.5f // Definir a largura das barras
 
-        barChart.data = barData
+        barChartProteina.data = barData
 
         // Configurar propriedades adicionais do gráfico
-        barChart.description.isEnabled = false // Desativar a descrição do gráfico
-        barChart.setFitBars(true) // Ajustar as barras dentro do gráfico
+        barChartProteina.description.isEnabled = false // Desativar a descrição do gráfico
+        barChartProteina.setFitBars(true) // Ajustar as barras dentro do gráfico
 
-        barChart.invalidate() // Atualizar o gráfico
+        barChartProteina.invalidate() // Atualizar o gráfico
     }
 }

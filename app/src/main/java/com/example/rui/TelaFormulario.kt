@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -95,13 +94,50 @@ class TelaFormulario : AppCompatActivity() {
             binding.BebidaBoa.isChecked = true
         }
         binding.btEnviar.setOnClickListener{
-            val confirmEnvio = AlertDialog.Builder(this)
-            confirmEnvio.setMessage("Confirmar envio?")
-            confirmEnvio.setNeutralButton("Cancelar", null)
-            confirmEnvio.setPositiveButton("Enviar") { _: DialogInterface?, _: Int -> enviar(butaoApertado) }
-            confirmEnvio.show()
+            confirmEnviar(butaoApertado)
+
         }
     }
+
+    private fun confirmEnviar(butaoApertado: String) {
+        val opcaoProteina = findViewById<RadioGroup>(R.id.AvaliacaoCarne)
+        val opcaoAcompanhamento = findViewById<RadioGroup>(R.id.AvaliacaoAcompanhamento)
+        val campoEmail = findViewById<EditText>(R.id.EmailInstitucional)
+
+        val erroNaoSelecionado = AlertDialog.Builder(this)
+        erroNaoSelecionado.setNeutralButton("Cancelar", null)
+
+        if (campoEmail.text.contains("@alu.ufc.br") or campoEmail.text.contains("@ufc.br")){
+            campoEmail.setTextColor(1234123123)
+        }else{
+            erroNaoSelecionado.setMessage("Email icompativel. \n Use um Email instucional da UFC")
+            erroNaoSelecionado.show()
+            return
+        }
+
+        val selectProteina = opcaoProteina.checkedRadioButtonId
+        if (selectProteina == -1){
+            erroNaoSelecionado.setMessage("Avaliação da proteina não selecionada.")
+            erroNaoSelecionado.show()
+            return
+            //Mensagem de Erro.
+        }
+
+        val selectAcompanhamento = opcaoAcompanhamento.checkedRadioButtonId
+        if (selectAcompanhamento == -1){
+            erroNaoSelecionado.setMessage("Avaliação do acompanhamento não selecionada.")
+            erroNaoSelecionado.show()
+            return
+            //Mensagem de Erro.
+        }
+
+        val confirmEnvio = AlertDialog.Builder(this)
+        confirmEnvio.setMessage("Confirmar envio?")
+        confirmEnvio.setNeutralButton("Cancelar", null)
+        confirmEnvio.setPositiveButton("Enviar") { _: DialogInterface?, _: Int -> enviar(butaoApertado) }
+        confirmEnvio.show()
+    }
+
     private fun ativar(){
         val caixa = binding.caixaDePergunta
         caixa.visibility = View.VISIBLE
@@ -165,12 +201,6 @@ class TelaFormulario : AppCompatActivity() {
         var sugestao = campoSugestao.text.toString()
         val data = getDataCompleta()
 
-        if (campoEmail.text.contains("@alu.ufc.br") or campoEmail.text.contains("@ufc.br")){
-            campoEmail.setTextColor(1234123123)
-        }else{
-            campoEmail.error = "E-mail Invalido. Aceito apenas Email Institucional"
-            return
-        }
 
         val selectProteina = opcaoProteina.checkedRadioButtonId
         val btnproteina = findViewById<RadioButton>(selectProteina)
@@ -194,12 +224,10 @@ class TelaFormulario : AppCompatActivity() {
 
         val selectBebida = opcaoBebida.checkedRadioButtonId
         val btnbebida =findViewById<RadioButton>(selectBebida)
-        if (selectBebida == -1){
-            Toast.makeText(this, "Avaliação da Bebida não Selecionado", Toast.LENGTH_SHORT).show()
-            return
-            //Mensagem de Erro.
+        bebida = if (selectBebida == -1){
+            "Não Respondido"
         }else{
-            bebida = btnbebida.text.toString()
+            btnbebida.text.toString()
         }
 
         if (sugestao.isEmpty()){

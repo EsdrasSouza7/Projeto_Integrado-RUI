@@ -204,6 +204,14 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="* Resposta Obrigatoria"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/Azul4"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/formulario_av1"
                     android:textColor="@color/Azul4"
                     android:textSize="20sp"
