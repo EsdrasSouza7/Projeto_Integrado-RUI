@@ -1,12 +1,19 @@
 package com.example.rui
 
+import android.content.DialogInterface
+import android.content.pm.PackageManager
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
+import android.os.Environment
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -22,6 +29,9 @@ import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.DefaultValueFormatter
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import java.io.File
+import java.io.FileWriter
+import java.io.IOException
 
 class TelaDadosNutricionista : AppCompatActivity() {
 
@@ -71,6 +81,14 @@ class TelaDadosNutricionista : AppCompatActivity() {
         val btnVoltar = findViewById<ImageButton>(R.id.btVoltar)
         btnVoltar.setOnClickListener {
             finish()
+        }
+        val btnExportar = findViewById<Button>(R.id.btnExportar)
+        btnExportar.setOnClickListener {
+            val confirExport = AlertDialog.Builder(this)
+            confirExport.setMessage("Exportar Como:")
+            confirExport.setNeutralButton("Cancelar", null)
+            confirExport.setPositiveButton(".Csv"){_: DialogInterface, _: Int -> exportDataToCSV(db)}
+            confirExport.show()
         }
     }
 
@@ -356,4 +374,47 @@ class TelaDadosNutricionista : AppCompatActivity() {
 
         barChartProteina.invalidate() // Atualizar o gráfico
     }
+
+    private fun getAllData(db: SQLiteDatabase): Cursor {
+        val query = "SELECT * FROM AvaliacaoRU" // Substitua por sua query
+        return db.rawQuery(query, null)
+    }
+
+    private fun exportDataToCSV(db: SQLiteDatabase) {
+        val cursor = getAllData(db)
+        val fileName = "dados_exportados.csv"
+
+        // Salvando na pasta Downloads
+        val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName)
+
+        try {
+            val fileWriter = FileWriter(file)
+
+            // Escrevendo cabeçalho e dados
+            val columnNames = cursor.columnNames
+            fileWriter.append(columnNames.joinToString(","))
+            fileWriter.append("\n")
+
+            while (cursor.moveToNext()) {
+                val rowData = mutableListOf<String>()
+                for (i in 0 until cursor.columnCount) {
+                    rowData.add(cursor.getString(i))
+                }
+                fileWriter.append(rowData.joinToString(","))
+                fileWriter.append("\n")
+            }
+
+            cursor.close()
+            fileWriter.flush()
+            fileWriter.close()
+
+            Toast.makeText(this, "Dados exportados para ${file.absolutePath}", Toast.LENGTH_LONG).show()
+
+        } catch (e: IOException) {
+            e.printStackTrace()
+            Toast.makeText(this, "Erro ao exportar os dados", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
 }

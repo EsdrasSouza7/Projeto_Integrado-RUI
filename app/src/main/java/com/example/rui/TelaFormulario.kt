@@ -240,6 +240,7 @@ class TelaFormulario : AppCompatActivity() {
             envioBemSucedido.setMessage("Avaliação bem sucedida")
             envioBemSucedido.setPositiveButton("Cardapio"){_: DialogInterface?, _: Int -> navegarCardapio()}
             envioBemSucedido.setNegativeButton("Menu Inicial"){_: DialogInterface?, _: Int -> finish()}
+            envioBemSucedido.setCancelable(false)
             envioBemSucedido.show()
         }else{
             Toast.makeText(this, "Erro ao Inserir Dados", Toast.LENGTH_SHORT).show()
