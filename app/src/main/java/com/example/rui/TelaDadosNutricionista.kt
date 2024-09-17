@@ -87,7 +87,11 @@ class TelaDadosNutricionista : AppCompatActivity() {
             val confirExport = AlertDialog.Builder(this)
             confirExport.setMessage("Exportar Como:")
             confirExport.setNeutralButton("Cancelar", null)
-            confirExport.setPositiveButton(".Csv"){_: DialogInterface, _: Int -> exportDataToCSV(db)}
+            confirExport.setPositiveButton(".Csv"){_: DialogInterface, _: Int ->
+                if (data != null) {
+                    exportDataToCSV(db, data)
+                }
+            }
             confirExport.show()
         }
     }
@@ -380,9 +384,10 @@ class TelaDadosNutricionista : AppCompatActivity() {
         return db.rawQuery(query, null)
     }
 
-    private fun exportDataToCSV(db: SQLiteDatabase) {
+    private fun exportDataToCSV(db: SQLiteDatabase, dataDados: String) {
         val cursor = getAllData(db)
-        val fileName = "dados_exportados.csv"
+        val dataSemBarras = dataDados.replace("/", "")
+        val fileName = "Avaliacoes-dia-${dataSemBarras}.csv"
 
         // Salvando na pasta Downloads
         val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName)
