@@ -68,10 +68,10 @@ class NotificationService : Service() {
     private fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channelId = "meu_canal_id"
-            val channelName = "Meu Canal"
+            val channelName = "Avaliar"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(channelId, channelName, importance).apply {
-                description = "Descrição do canal"
+                description = "Canal para Notificar se ja Avaliou o Cardapio"
             }
             val notificationManager: NotificationManager =
                 context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -90,7 +90,8 @@ class NotificationService : Service() {
 
         val builder = NotificationCompat.Builder(context, channelId)
             .setSmallIcon(R.drawable.rui)
-            .setContentTitle("Titulo da notificação")
+            .setContentTitle("Já Avaliou o Cardapio?")
+            .setContentText("Se não clique na notificação")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
