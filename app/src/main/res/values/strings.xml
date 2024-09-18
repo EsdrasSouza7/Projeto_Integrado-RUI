@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">R.U.I</string>
-    <string name="txt_Button_Entrar">Cardapio</string>
+    <string name="txt_Button_Entrar">Cardápio</string>
     <string name="txt_button_avaliar">Avaliar</string>
     <string name="des_img_comida">Prato de comida</string>
     <string name="des_img_ufc">Logo da UFC</string>
@@ -11,7 +11,7 @@
     <string name="btn_carne_branca">Carne branca</string>
     <string name="btn_carne_vegetariana">Vegetariana</string>
     <string name="titulo_formulario">Avaliação do cardápio</string>
-    <string name="formulario_av1">Proteina:*</string>
+    <string name="formulario_av1">Proteína:*</string>
     <string name="formulario_av2">Acompanhamentos:*</string>
     <string name="formulario_av4">Bebida:</string>
     <string name="btn_enviar">--></string>
@@ -24,7 +24,7 @@
     <string name="boa">Boa</string>
     <string name="neutra">Neutra</string>
     <string name="ruim">Ruim</string>
-    <string name="confirmar_avaliacao">Avaliação Enviada com Sucesso</string>
+    <string name="confirmar_avaliacao">Avaliação enviada com sucesso</string>
     <string name="email">Email:</string>
     <string name="editText">É um texto</string>
     <string name="bot_o_acompanhamento_ruim">botão acompanhamento ruim</string>
@@ -40,23 +40,4 @@
     <string name="bot_o_bebida_bom">botão bebida bom</string>
     <string name="imagem_bot_o_bebida_boa">imagem botão bebida boa</string>
     <string name="cardapio_ufc_itapaje">Cardapio UFC/Itapaje</string>
-    <string name="segunda">Segunda</string>
-    <string name="ingredientes_1">Lasanha de carne moida, Acem Moida, Farinha de trigo, Tomate, Cebola, Pimentão, molho de tomate e sal;</string>
-    <string name="acompanhamento_1">Arroz, Feijão.</string>
-    <string name="proteinas_1">Carne vermelha: Feijoada\nCarne branca: Coxa e sobrecoxa\nVegetariano: Empadão de soja</string>
-    <string name="lista_de_ingredientes">Lista de ingredientes:</string>
-    <string name="acompanhamento">Acompanhamento</string>
-    <string name="ingredientes_2">Lasanha de carne moida, Acem Moida, Farinha de trigp, Tomate, Cebola, Pimentão, molho de tomate e sal;</string>
-    <string name="guarni_o">Guarnição</string>
-    <string name="guarni_o_1">Farofa dourada</string>
-    <string name="salada">Salada</string>
-    <string name="salada_1">Vinagrete</string>
-    <string name="salada_2">Jerimun e chuchu cozido</string>
-    <string name="guarni_o_2">Macarrão</string>
-    <string name="proteinas_2">Carne vermelha: Cozidão bovino\nCarne branca: Frango em cubos com calabresa\nVegetariano: Almôndega de batata com lentinha</string>
-    <string name="ter_a">Terça</string>
-    <string name="desc_button2">Isto é a porra de um botão para passar a tela</string>
-    <string name="uma_salada_de_frutas">Uma Salada de Frutas</string>
-
-
 </resources>

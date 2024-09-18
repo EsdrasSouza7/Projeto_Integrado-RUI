@@ -85,6 +85,11 @@ class Cardapio : AppCompatActivity() {
 
         val prevButton = findViewById<ImageButton>(R.id.btnAnteDia)
         val nextButton = findViewById<ImageButton>(R.id.btnProxDia)
+        val btnVoltar = findViewById<ImageButton>(R.id.btnVoltar)
+
+        btnVoltar.setOnClickListener{
+            finish()
+        }
 
         // Desativa o primeiro botao quando começamos
         prevButton.isEnabled = false

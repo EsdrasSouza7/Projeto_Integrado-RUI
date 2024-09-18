@@ -110,14 +110,14 @@ class TelaFormulario : AppCompatActivity() {
         if (campoEmail.text.contains("@alu.ufc.br") or campoEmail.text.contains("@ufc.br")){
             campoEmail.setTextColor(1234123123)
         }else{
-            erroNaoSelecionado.setMessage("Email icompativel. \n Use um Email instucional da UFC")
+            erroNaoSelecionado.setMessage("Email icompatível. \n Use um email instucional da UFC")
             erroNaoSelecionado.show()
             return
         }
 
         val selectProteina = opcaoProteina.checkedRadioButtonId
         if (selectProteina == -1){
-            erroNaoSelecionado.setMessage("Avaliação da proteina não selecionada.")
+            erroNaoSelecionado.setMessage("Avaliação da proteína não selecionada.")
             erroNaoSelecionado.show()
             return
             //Mensagem de Erro.
@@ -205,7 +205,7 @@ class TelaFormulario : AppCompatActivity() {
         val selectProteina = opcaoProteina.checkedRadioButtonId
         val btnproteina = findViewById<RadioButton>(selectProteina)
         if (selectProteina == -1){
-            Toast.makeText(this, "Avaliação da Proteina não Selecionado", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Avaliação da proteina não selecionado", Toast.LENGTH_SHORT).show()
             return
             //Mensagem de Erro.
         }else{
@@ -215,7 +215,7 @@ class TelaFormulario : AppCompatActivity() {
         val selectAcompanhamento = opcaoAcompanhamento.checkedRadioButtonId
         val btnacompanhamento = findViewById<RadioButton>(selectAcompanhamento)
         if (selectAcompanhamento == -1){
-            Toast.makeText(this, "Avaliação da Acompanhamento não Selecionado", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Avaliação da acompanhamento não selecionado", Toast.LENGTH_SHORT).show()
             return
             //Mensagem de Erro.
         }else{
@@ -225,13 +225,13 @@ class TelaFormulario : AppCompatActivity() {
         val selectBebida = opcaoBebida.checkedRadioButtonId
         val btnbebida =findViewById<RadioButton>(selectBebida)
         bebida = if (selectBebida == -1){
-            "Não Respondido"
+            "Não respondido"
         }else{
             btnbebida.text.toString()
         }
 
         if (sugestao.isEmpty()){
-            sugestao = "Em Branco"
+            sugestao = "Em branco"
         }
 
         val isInsert = dbHelper.insertData(email, data, butaoapertado, proteina, acompanhamento, bebida, sugestao)
@@ -239,11 +239,11 @@ class TelaFormulario : AppCompatActivity() {
             val envioBemSucedido = AlertDialog.Builder(this)
             envioBemSucedido.setMessage("Avaliação bem sucedida")
             envioBemSucedido.setPositiveButton("Cardapio"){_: DialogInterface?, _: Int -> navegarCardapio()}
-            envioBemSucedido.setNegativeButton("Menu Inicial"){_: DialogInterface?, _: Int -> finish()}
+            envioBemSucedido.setNegativeButton("Menu inicial"){_: DialogInterface?, _: Int -> finish()}
             envioBemSucedido.setCancelable(false)
             envioBemSucedido.show()
         }else{
-            Toast.makeText(this, "Erro ao Inserir Dados", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Erro ao inserir dados", Toast.LENGTH_SHORT).show()
         }
     }
 
