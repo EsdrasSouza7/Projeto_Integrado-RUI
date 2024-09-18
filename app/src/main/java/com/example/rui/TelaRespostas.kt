@@ -42,7 +42,7 @@ class TelaRespostas : AppCompatActivity() {
         val respostas = dbHelper.getAllData()
         val resultado = StringBuilder()
         for (resposta in respostas) {
-            resultado.append("Data: ${resposta.data} \nEmail: ${resposta.email}\nCarne Escolhida: ${resposta.qProteina}\nAvaliações:\nProteina: ${resposta.rProteina}\nAcompanhamento: ${resposta.acompanhamento}\nBebida: ${resposta.bebida}\nSugestão: ${resposta.sugestao}\n\n")
+            resultado.append("Data: ${resposta.data} \nEmail: ${resposta.email}\nCarne escolhida: ${resposta.qProteina}\nAvaliações:\nProteína: ${resposta.rProteina}\nAcompanhamento: ${resposta.acompanhamento}\nBebida: ${resposta.bebida}\nSugestão: ${resposta.sugestao}\n\n")
         }
         val textViewResultado = findViewById<TextView>(R.id.textViewRespostas)
         textViewResultado.text = resultado.toString()

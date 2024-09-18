@@ -20,7 +20,7 @@
         android:fontFamily="sans-serif-black"
         android:textColor="@color/Azul1"
         android:textAllCaps="true"
-        android:text="Cardapio da"
+        android:text="Cardápio da"
         android:textSize="28sp"
         android:gravity="right"/>
 
@@ -63,6 +63,7 @@
         android:id="@+id/btnProxDia"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_marginTop="-5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/paginacaoCardapio"
         android:src="@drawable/baseline_arrow_right_24"
@@ -74,6 +75,7 @@
         android:id="@+id/btnAnteDia"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_marginTop="-5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/paginacaoCardapio"
         android:src="@drawable/baseline_arrow_left_24"
