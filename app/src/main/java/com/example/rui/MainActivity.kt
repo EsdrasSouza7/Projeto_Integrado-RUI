@@ -43,6 +43,9 @@ class MainActivity : AppCompatActivity() {
         // Agendar para rodar imediatamente
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), pendingIntent)
 
+        binding.BtnSobre.setOnClickListener {
+            sobre()
+        }
 
         binding.BtAvaliar.setOnClickListener {
             avaliar()
@@ -57,6 +60,11 @@ class MainActivity : AppCompatActivity() {
         binding.BtnNutricionista.setOnClickListener {
             nutricionista()
         }
+    }
+
+    private fun sobre() {
+        val intent = Intent(this, TelaSobre::class.java)
+        startActivity(intent)
     }
 
     private fun nutricionista() {

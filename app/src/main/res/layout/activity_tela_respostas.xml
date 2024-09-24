@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,76 +8,66 @@
     android:background="@color/BackGround"
     tools:context=".TelaRespostas">
 
-    <View
-        android:id="@+id/ContainerTop"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/ImgLogoUFC"
-        android:layout_width="100dp"
-        android:layout_height="105dp"
-        android:contentDescription="@string/des_img_ufc"
-        android:src="@drawable/logo_ufc"
-        app:layout_constraintEnd_toEndOf="@+id/ContainerTop"
-        app:layout_constraintTop_toTopOf="@+id/ContainerTop" />
+        <View
+            android:id="@+id/ContainerTop"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btVoltar"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/buttonredondos"
-        android:src="@drawable/baseline_arrow_back_ios_new_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/ImgLogoUFC"
+            android:layout_width="100dp"
+            android:layout_height="105dp"
+            android:contentDescription="@string/des_img_ufc"
+            android:src="@drawable/logo_ufc"
+            app:layout_constraintEnd_toEndOf="@+id/ContainerTop"
+            app:layout_constraintTop_toTopOf="@+id/ContainerTop" />
 
-    <TextView
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/ContainerTop"
-        app:layout_constraintStart_toStartOf="@id/ContainerTop"
-        app:layout_constraintEnd_toEndOf="@id/ContainerTop"
+        <ImageButton
+            android:id="@+id/btVoltar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/buttonredondos"
+            android:src="@drawable/baseline_arrow_back_ios_new_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        android:text="Historico de Respostas"
-        android:textSize="20sp"
-        android:textColor="@color/Azul4"
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
 
-        android:layout_marginTop="20dp"
-        android:fontFamily="sans-serif-black"
-        android:textAllCaps="true"
-        android:gravity="center"
-        />
+            android:text="Historico de Respostas"
+            android:textAllCaps="true"
+            android:textColor="@color/Azul4"
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ContainerTop">
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@id/ContainerTop"
+            app:layout_constraintStart_toStartOf="@id/ContainerTop"
+            app:layout_constraintTop_toTopOf="@id/ContainerTop" />
 
         <LinearLayout
+            android:id="@+id/LinearLayouRespostas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textViewRespostas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-
-                android:textSize="18sp"
-                android:textColor="@color/Azul4"
-
-                android:fontFamily="sans-serif-black"
-                android:gravity="center"
-
-                android:text="tesxtoTEsxtata"/>
-
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/ContainerTop">
 
         </LinearLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintTop_toBottomOf="@id/LinearLayouRespostas" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
