@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".TelaSobre">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tituloSobreNos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="end"
+
+            android:text="Sobre Nós"
+            android:textAllCaps="true"
+            android:textColor="@color/Azul4"
+            android:textSize="35sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnVoltar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/buttonredondos"
+            android:src="@drawable/baseline_arrow_back_ios_new_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/SobreoApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="5dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Sobre o App"
+            android:textAllCaps="true"
+            android:textColor="@color/Azul4"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/tituloSobreNos" />
+
+        <TextView
+            android:id="@+id/SobreoApp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/SobreoApp"
+            android:layout_marginStart="5dp"
+            android:text="Este aplicativo foi desenvolvido para facilitar o acesso ao cardápio diário e às avaliações de refeições servidas no Restaurante Universitário. Nosso objetivo é proporcionar uma experiência mais interativa e transparente para os estudantes, oferecendo a oportunidade de conferir o cardápio antecipadamente e deixar suas impressões sobre as refeições."
+            android:fontFamily="sans-serif"
+            android:textAllCaps="true"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+
+            />
+
+        <TextView
+            android:id="@+id/SobreoApp3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="5dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Desenvolvedores"
+            android:textAllCaps="true"
+            android:textColor="@color/Azul4"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/SobreoApp2" />
+
+        <TextView
+            android:id="@+id/SobreoApp4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/SobreoApp3"
+            android:layout_marginStart="5dp"
+            android:text="Somos um grupo de estudantes da Universidade Federal do Ceará Campus Itapajé, comprometidos em melhorar a experiência cotidiana no campus. Nossa equipe é formada por desenvolvedores apaixonados por tecnologia e inovação, em busca de soluções práticas para o dia a dia universitário. O aplicativo foi criado na diciplina de Projeto Integrador 2 do Curso de Analise e Desenvolvimento de Sistema."
+            android:fontFamily="sans-serif"
+            android:textAllCaps="true"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            />
+
+        <ImageView
+            android:id="@+id/Imagem1"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintTop_toBottomOf="@id/SobreoApp4"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/devesdras"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/SobreoApp4"
+            app:layout_constraintStart_toEndOf="@id/Imagem1"
+            android:text="Esdras Souza dos Santos\nDev FullStack\nsouzaesdras@alu.ufc.br"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif"
+            android:textAllCaps="true"
+            />
+
+        <ImageView
+            android:id="@+id/Imagem2"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintTop_toBottomOf="@id/Imagem1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/devluan"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/Imagem1"
+            app:layout_constraintStart_toEndOf="@id/Imagem2"
+            android:text="Luan Sales Barroso \nDev FullStack\nmastery@alu.ufc.br"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif"
+            android:textAllCaps="true"
+            />
+
+        <ImageView
+            android:id="@+id/Imagem3"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+
+            app:layout_constraintTop_toBottomOf="@id/Imagem2"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/devcaua"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/Imagem2"
+            app:layout_constraintStart_toEndOf="@id/Imagem3"
+            android:text="Cauã de Sousa Brandão \nAnalista de Sistema e Designer\nBrandao@alu.ufc.br"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif"
+            android:textAllCaps="true"
+            />
+
+        <ImageView
+            android:id="@+id/Imagem4"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintTop_toBottomOf="@id/Imagem3"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/orieanderson"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/Imagem3"
+            app:layout_constraintStart_toEndOf="@id/Imagem4"
+            android:text="Anderson Uchõa\nOrientador\nandersonuchoa@ufc.br"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif"
+            android:textAllCaps="true"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintTop_toBottomOf="@id/Imagem4"
+            />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

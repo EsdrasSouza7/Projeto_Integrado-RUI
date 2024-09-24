@@ -15,14 +15,18 @@
         android:layout_height="wrap_content"
         tools:context=".MainActivity">
 
-        <ImageView
-            android:id="@+id/ImgLogoUFC"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:contentDescription="@string/des_img_ufc"
-            android:src="@drawable/logo_ufc"
+        <ImageButton
+            android:id="@+id/BtnSobre"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:contentDescription="botão Sobre"
+            android:src="@drawable/question_mark_24"
+            android:background="@drawable/buttonredondos"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            />
 
         <ImageView
             android:id="@+id/Ellipse"
