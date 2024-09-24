@@ -35,8 +35,8 @@
 
             <ImageButton
                 android:id="@+id/btVoltar"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/buttonredondos"
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/txtDia"
 
-                android:text="Geral Avaliação Proteina:"
+                android:text="Geral Avaliação Proteína:"
                 android:textSize="20sp"
                 android:textColor="@color/Azul4"
 
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/pieChartProteina"
 
-                android:text="Avaliação Proteina Separada por Carne:"
+                android:text="Avaliação Proteína Separada por Carne:"
                 android:textSize="18sp"
                 android:textColor="@color/Azul4"
 

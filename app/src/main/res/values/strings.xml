@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">R.U.I</string>
-    <string name="txt_Button_Entrar">Cardapio</string>
+    <string name="txt_Button_Entrar">Cardápio</string>
     <string name="txt_button_avaliar">Avaliar</string>
     <string name="des_img_comida">Prato de comida</string>
     <string name="txt_data_almoco">Data da avaliação:</string>
@@ -10,7 +10,7 @@
     <string name="btn_carne_branca">Carne branca</string>
     <string name="btn_carne_vegetariana">Vegetariana</string>
     <string name="titulo_formulario">Avaliação do cardápio</string>
-    <string name="formulario_av1">Proteina:*</string>
+    <string name="formulario_av1">Proteína:*</string>
     <string name="formulario_av2">Acompanhamentos:*</string>
     <string name="formulario_av4">Bebida:</string>
     <string name="btn_enviar">--></string>
@@ -23,7 +23,7 @@
     <string name="boa">Boa</string>
     <string name="neutra">Neutra</string>
     <string name="ruim">Ruim</string>
-    <string name="confirmar_avaliacao">Avaliação Enviada com Sucesso</string>
+    <string name="confirmar_avaliacao">Avaliação enviada com sucesso</string>
     <string name="email">Email:</string>
     <string name="editText">É um texto</string>
     <string name="bot_o_acompanhamento_ruim">botão acompanhamento ruim</string>
@@ -57,6 +57,4 @@
     <string name="desc_button2">Isto é a porra de um botão para passar a tela</string>
     <string name="uma_salada_de_frutas">Uma Salada de Frutas</string>
     <string name="des_img_ufc">Imagem Ufc</string>
-
-
 </resources>

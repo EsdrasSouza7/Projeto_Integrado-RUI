@@ -47,7 +47,7 @@
 
     <View
         android:id="@+id/viewCarneVermelha"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="160dp"
         app:layout_constraintTop_toTopOf="@id/containCardapio"
         app:layout_constraintStart_toStartOf="@id/containCardapio"
@@ -93,7 +93,7 @@
 
     <View
         android:id="@+id/viewCarneBranca"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="160dp"
         app:layout_constraintTop_toTopOf="@id/containCardapio"
         app:layout_constraintStart_toStartOf="@id/containCardapio"
@@ -138,7 +138,7 @@
 
     <View
         android:id="@+id/viewCarneVegetariana"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="160dp"
         app:layout_constraintTop_toTopOf="@id/containCardapio"
         app:layout_constraintEnd_toEndOf="@id/containCardapio"

@@ -8,8 +8,8 @@ _Nosso projeto tem como funcionalidade a visualização e a avaliaçao do cardap
 <h1 align="center"> 💻Participantes do projeto e orientador</h1>
 Anderson Uchoa <br> 
 Cauã Brandão | Matricula: 540909</br>
-Esdras Souza | Matricula: xxxxxxx</br>
-Luan Sales | Matricula: XXXXXXX</br>
+Esdras Souza | Matricula: 539718</br>
+Luan Sales | Matricula: 540070</br>
 
 <h1 align="center"> 🪧Funcionalidades do projeto</h1>
 

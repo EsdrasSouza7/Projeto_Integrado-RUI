@@ -85,9 +85,9 @@ class TelaDadosNutricionista : AppCompatActivity() {
         val btnExportar = findViewById<Button>(R.id.btnExportar)
         btnExportar.setOnClickListener {
             val confirExport = AlertDialog.Builder(this)
-            confirExport.setMessage("Exportar Como:")
+            confirExport.setMessage("Exportar como:")
             confirExport.setNeutralButton("Cancelar", null)
-            confirExport.setPositiveButton(".Csv"){_: DialogInterface, _: Int ->
+            confirExport.setPositiveButton(".CSV"){_: DialogInterface, _: Int ->
                 if (data != null) {
                     exportDataToCSV(db, data)
                 }
@@ -128,15 +128,15 @@ class TelaDadosNutricionista : AppCompatActivity() {
             }
         }
         for (palavra  in listaPalavras) {
-            if (palavra == "Não Respondido"){
+            if (palavra == "Não respondido"){
                 verificacao = true
             }
         }
         if(verificacao){
-            contagemPalavras["Não Respondido"] = 0f
+            contagemPalavras["Não respondido"] = 0f
             for (palavra  in listaPalavras) {
-                val count = contagemPalavras.getOrDefault("Não Respondido", 0f)
-                if (palavra == "Não Respondido"){
+                val count = contagemPalavras.getOrDefault("Não respondido", 0f)
+                if (palavra == "Não respondido"){
                     contagemPalavras[palavra] = count + 1f
                 }
             }
@@ -162,7 +162,7 @@ class TelaDadosNutricionista : AppCompatActivity() {
         }
 
         // Configurar o dataset para o gráfico de pizza
-        val dataSet = PieDataSet(pieEntries, "Qualidades Proteinas")
+        val dataSet = PieDataSet(pieEntries, "Qualidades proteinas")
         dataSet.colors = colors // Definir cores
         dataSet.valueTextSize = 13f // Tamanho do texto opcional
         dataSet.valueFormatter = DefaultValueFormatter(0) // Formatação opcional
@@ -173,7 +173,7 @@ class TelaDadosNutricionista : AppCompatActivity() {
 
         // Configurar outras propriedades do gráfico
         pieChartProteina.description.isEnabled = false // Desativar a descrição
-        pieChartProteina.centerText = "Notas da Qualidade das Proteinas" // Texto central
+        pieChartProteina.centerText = "Notas da qualidade das proteinas" // Texto central
         pieChartProteina.setEntryLabelColor(android.R.color.black) // Cor dos labels
 
         pieChartProteina.invalidate() // Atualizar o gráfico
@@ -197,7 +197,7 @@ class TelaDadosNutricionista : AppCompatActivity() {
         }
 
         // Configurar o dataset para o gráfico de pizza
-        val dataSet = PieDataSet(pieEntries, "Qualidades Acompanhamento")
+        val dataSet = PieDataSet(pieEntries, "Qualidades acompanhamento")
         dataSet.colors = colors // Definir cores
         dataSet.valueTextSize = 13f // Tamanho do texto opcional
         dataSet.valueFormatter = DefaultValueFormatter(0) // Formatação opcional
@@ -208,7 +208,7 @@ class TelaDadosNutricionista : AppCompatActivity() {
 
         // Configurar outras propriedades do gráfico
         pieCharAcompanhamento.description.isEnabled = false // Desativar a descrição
-        pieCharAcompanhamento.centerText = "Notas da Qualidade das Acompanhamento" // Texto central
+        pieCharAcompanhamento.centerText = "Notas da qualidade das acompanhamento" // Texto central
         pieCharAcompanhamento.setEntryLabelColor(android.R.color.black) // Cor dos labels
 
         pieCharAcompanhamento.invalidate() // Atualizar o gráfico
@@ -233,7 +233,7 @@ class TelaDadosNutricionista : AppCompatActivity() {
         }
 
         // Configurar o dataset para o gráfico de pizza
-        val dataSet = PieDataSet(pieEntries, "Qualidades Bebida")
+        val dataSet = PieDataSet(pieEntries, "Qualidades bebida")
         dataSet.colors = colors // Definir cores
         dataSet.valueTextSize = 13f // Tamanho do texto opcional
         dataSet.valueFormatter = DefaultValueFormatter(0) // Formatação opcional
@@ -244,7 +244,7 @@ class TelaDadosNutricionista : AppCompatActivity() {
 
         // Configurar outras propriedades do gráfico
         pieChartBebida.description.isEnabled = false // Desativar a descrição
-        pieChartBebida.centerText = "Notas da Qualidade das Bebida" // Texto central
+        pieChartBebida.centerText = "Notas da qualidade das bebida" // Texto central
         pieChartBebida.setEntryLabelColor(android.R.color.black) // Cor dos labels
 
         pieChartBebida.invalidate() // Atualizar o gráfico
@@ -350,7 +350,7 @@ class TelaDadosNutricionista : AppCompatActivity() {
         barEntries.add(BarEntry(2f, notas3))
 
         //Criar o dataset
-        val dataSet = BarDataSet(barEntries, "Notas Todas As Proteinas")
+        val dataSet = BarDataSet(barEntries, "Notas todas as proteínas")
         dataSet.colors = colors // Definir cores para cada segmento da barra
         dataSet.setStackLabels(arrayOf("Bom", "Neutro", "Ruim")) // Definir labels para as stacks
 
@@ -361,7 +361,7 @@ class TelaDadosNutricionista : AppCompatActivity() {
 
         //Descrição embaixo da barra
         val xAxis = barChartProteina.xAxis
-        xAxis.valueFormatter = IndexAxisValueFormatter(arrayOf("Carne Vermelha", "Carne Branca", "Vegetariana"))
+        xAxis.valueFormatter = IndexAxisValueFormatter(arrayOf("Carne vermelha", "Carne branca", "Vegetariana"))
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.granularity = 1f // Define a granularidade para 1, para que cada barra tenha uma descrição
         xAxis.setDrawLabels(true)

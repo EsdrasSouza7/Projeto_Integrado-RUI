@@ -25,7 +25,7 @@ class NotificationService : Service() {
         val currentTime = System.currentTimeMillis()
 
         // Defina o horário em que a notificação deve ser enviada (ex: 9:00 AM)
-        val notifyTime = getTargetTimeInMillis(9, 0) // 9:00 AM
+        val notifyTime = getTargetTimeInMillis(7, 0) // 9:00 AM
 
         if (currentTime >= notifyTime) {
             // Se for a hora certa, envie a notificação
@@ -71,7 +71,7 @@ class NotificationService : Service() {
             val channelName = "Avaliar"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(channelId, channelName, importance).apply {
-                description = "Canal para Notificar se ja Avaliou o Cardapio"
+                description = "Canal para notificar se já avaliou o cardápio"
             }
             val notificationManager: NotificationManager =
                 context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -80,36 +80,42 @@ class NotificationService : Service() {
         }
     }
 
-    private fun showNotification(context: Context){
+    private fun showNotification(context: Context) {
         val channelId = "meu_canal_id"
 
         val intent = Intent(context, TelaFormulario::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(context, O, intent, PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntent: PendingIntent =
+            PendingIntent.getActivity(context, O, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val builder = NotificationCompat.Builder(context, channelId)
             .setSmallIcon(R.drawable.rui)
-            .setContentTitle("Já Avaliou o Cardapio?")
+            .setContentTitle("Já avaliou o cardápio hoje?")
             .setContentText("Se não clique na notificação")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
-        with(NotificationManagerCompat.from(context)){
+        with(NotificationManagerCompat.from(context)) {
             val notificationId = 1
             if (ActivityCompat.checkSelfPermission(
                     context,
                     Manifest.permission.POST_NOTIFICATIONS
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
+
+//                here to request the missing permissions, and then overriding
+
+                fun onRequestPermissionsResult(
+                    requestCode: Int,
+                    permissions: List<String>,
+                    grantResults: List<Int>
+                ) {
+
+                }
+//                to handle the case where the user grants the permission. See the documentation
+//                for ActivityCompat#requestPermissions for more details.
                 return
             }
             notify(notificationId, builder.build())
