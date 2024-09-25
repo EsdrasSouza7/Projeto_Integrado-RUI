@@ -46,6 +46,7 @@
             android:layout_marginStart="5dp"
             android:fontFamily="sans-serif-black"
             android:text="Sobre o App"
+            android:gravity="center"
             android:textAllCaps="true"
             android:textColor="@color/Azul4"
             android:textSize="20sp"
@@ -57,10 +58,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/SobreoApp"
             android:layout_marginStart="5dp"
-            android:text="Este aplicativo foi desenvolvido para facilitar o acesso ao cardápio diário e às avaliações de refeições servidas no Restaurante Universitário. Nosso objetivo é proporcionar uma experiência mais interativa e transparente para os estudantes, oferecendo a oportunidade de conferir o cardápio antecipadamente e deixar suas impressões sobre as refeições."
+            android:text="O aplicativo facilita o acesso ao cardápio e às avaliações das refeições do Restaurante Universitário, oferecendo uma experiência interativa e transparente para os estudantes."
             android:fontFamily="sans-serif"
             android:textAllCaps="true"
-            android:textSize="16sp"
+            android:textSize="14.5sp"
             android:textColor="@color/black"
 
             />
@@ -73,6 +74,7 @@
             android:layout_marginStart="5dp"
             android:fontFamily="sans-serif-black"
             android:text="Desenvolvedores"
+            android:gravity="center"
             android:textAllCaps="true"
             android:textColor="@color/Azul4"
             android:textSize="20sp"
@@ -84,10 +86,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/SobreoApp3"
             android:layout_marginStart="5dp"
-            android:text="Somos um grupo de estudantes da Universidade Federal do Ceará Campus Itapajé, comprometidos em melhorar a experiência cotidiana no campus. Nossa equipe é formada por desenvolvedores apaixonados por tecnologia e inovação, em busca de soluções práticas para o dia a dia universitário. O aplicativo foi criado na diciplina de Projeto Integrador 2 do Curso de Analise e Desenvolvimento de Sistema."
+            android:text="Somos estudantes da UFC Itapajé e desenvolvemos o app para facilitar o cotidiano universitário. Desenvolvido na disciplina de Projeto Integrador 2 do curso de ADS."
             android:fontFamily="sans-serif"
             android:textAllCaps="true"
-            android:textSize="16sp"
+            android:textSize="14.5sp"
             android:textColor="@color/black"
             />
 
@@ -123,7 +125,7 @@
             android:layout_marginStart="10dp"
             app:layout_constraintTop_toBottomOf="@id/Imagem1"
             app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/devluan"
+            android:src="@drawable/deluan"
             />
 
         <TextView
@@ -180,7 +182,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/Imagem3"
             app:layout_constraintStart_toEndOf="@id/Imagem4"
-            android:text="Anderson Uchõa\nOrientador\nandersonuchoa@ufc.br"
+            android:text="Anderson Uchôa\nOrientador\nandersonuchoa@ufc.br"
             android:layout_marginTop="30dp"
             android:layout_marginStart="10dp"
             android:textColor="@color/black"
