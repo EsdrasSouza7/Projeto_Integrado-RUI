@@ -6,7 +6,7 @@ _Nosso projeto tem como funcionalidade a visualização e a avaliaçao do cardap
  ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge) 
 
 <h1 align="center"> 💻Participantes do projeto e orientador</h1>
-Anderson Uchoa <br> 
+Anderson Uchôa <br> 
 Cauã Brandão | Matricula: 540909</br>
 Esdras Souza | Matricula: 539718</br>
 Luan Sales | Matricula: 540070</br>
